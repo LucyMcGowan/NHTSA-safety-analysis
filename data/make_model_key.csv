@@ -1,0 +1,1711 @@
+-1~-1>(-1)Blank
+1~-1>(-1)Blank
+1~1>(1)Rambler/American
+1~2>(2)Rebel/Matador/Marlin
+1~3>(3)Ambassador
+1~4>(4)Pacer
+1~5>(5)AMX
+1~6>(6)Javelin
+1~7>(7)Hornet/Concord
+1~8>(8)Spirit/Gremlin
+1~9>(9)Eagle
+1~10>(10)Eagle SX-4
+1~398>(398)Other (automobile)
+1~399>(399)Unknown (automobile)
+1~997>(997)Not Reported
+2~-1>(-1)Blank
+2~1>(1)Compass
+2~401>(401)CJ-2/CJ-3/CJ-4
+2~402>(402)CJ-5/CJ-6/CJ-7/CJ-8
+2~403>(403)YJ series/Wrangler
+2~404>(404)Cherokee (1984-on)
+2~405>(405)Liberty
+2~406>(406)Commander
+2~407>(407)Patriot
+2~421>(421)Cherokee (thru 1983)
+2~431>(431)Grand Wagoneer
+2~481>(481)Pick-up
+2~482>(482)Comanche
+2~498>(498)Other (light truck)
+2~499>(499)Unknown (light truck)
+2~997>(997)Not Reported
+2~999>(999)Unknown (JEEP)
+3~-1>(-1)Blank
+3~401>(401)Dispatcher
+3~402>(402)Hummer
+3~421>(421)Hummer (SUV from 1993-2003; see 431 for 2004 on) (for Pickup see model 481)
+
+3~431>(431)Hummer (2004 on; see model 421 for 1993-2003)
+3~466>(466)Dispatcher
+3~481>(481)Hummer (Pickup) (for SUV see model 421 for 1993-2003; see 431 for 2004 on)
+3~482>(482)Hummer
+3~498>(498)Other (light truck)
+3~499>(499)Unknown (light truck)
+3~884>(884)Medium/Heavy Truck
+3~898>(898)Other (medium/heavy truck)
+3~899>(899)Unknown (medium/heavy truck
+3~983>(983)Bus: Rear engine Flat front
+3~988>(988)Other(bus)
+3~989>(989)Unknown Bus Type
+3~997>(997)Not Reported
+3~998>(998)Other (vehicle)
+3~999>(999)Unknown (AM GENERAL)
+6~-1>(-1)Blank
+6~9>(9)Cordoba
+6~10>(10)New Yorker (thru 78)/ Newport/5th Avenue/Imperial (1979-83) 
+   (excludes all FWD)
+
+6~14>(14)New Yorker/E-Class/Imperial/ Fifth Avenue
+6~15>(15)Laser
+6~16>(16)LeBaron
+6~17>(17)LeBaron GTS/GTC
+6~18>(18)200
+6~31>(31)TC (Maserati Sport)
+6~35>(35)Conquest
+6~41>(41)Concorde
+6~42>(42)LHS
+6~43>(43)Sebring
+6~44>(44)Cirrus
+6~50>(50)Executive
+6~51>(51)300M/300/300C/300S
+6~52>(52)PT Cruiser
+6~53>(53)Prowler (2002 on)  (19971999-01 see Plymouth)
+6~54>(54)Pacifica
+6~55>(55)Crossfire
+6~398>(398)Other (automobile)
+6~399>(399)Unknown (automobile)
+6~421>(421)Aspen
+6~441>(441)Town and Country
+6~442>(442)Voyager (2000 on; 1984-00 see Plymouth)
+
+6~499>(499)Unknown (light truck)
+6~997>(997)Not Reported
+6~999>(999)Unknown (CHRYSLER)
+7~-1>(-1)Blank
+7~1>(1)Dart
+7~2>(2)Coronet/Magnum/ Charger (thru 1978)
+
+7~3>(3)Polara/Monaco/ Royal Monaco
+7~4>(4)Viper
+7~5>(5)Challenger
+7~6>(6)Aspen
+7~7>(7)Diplomat
+7~8>(8)Omni/Charger (1983 on)
+7~9>(9)Mirada
+7~10>(10)St Regis
+7~11>(11)Aries (K)
+7~12>(12)400
+7~13>(13)Rampage (car-based pickup)
+7~14>(14)600
+7~15>(15)Daytona
+7~16>(16)Lancer
+7~17>(17)Shadow
+7~18>(18)Dynasty
+7~19>(19)Spirit
+7~20>(20)Neon
+7~21>(21)Magnum
+7~24>(24)Charger
+7~25>(25)Caliber
+7~26>(26)Avenger
+7~27>(27)Journey
+7~28>(28)Challenger
+7~33>(33)Challenger
+7~34>(34)Colt  (includes 2WD Vista)
+7~35>(35)Conquest
+7~39>(39)Stealth
+7~40>(40)Monaco
+7~41>(41)Intrepid
+7~42>(42)Avenger
+7~43>(43)Stratus
+7~398>(398)Other (automobile)
+7~399>(399)Unknown (automobile)
+7~401>(401)RaiderSport
+7~402>(402)Durango (1998-2003 only; see model 422 for 2004 on)
+7~403>(403)Nitro
+7~421>(421)Ramcharger
+7~422>(422)Durango (2004 on; see 402 for 1998-2003 models)
+7~441>(441)Vista Van
+7~442>(442)Caravan/Grand Caravan
+7~461>(461)B-Series Van/Ram Van/ Ram Wagon
+7~462>(462)Sprinter
+7~470>(470)Van Derivative
+7~471>(471)D50 Colt pickup Ram 50/Ram 100
+7~472>(472)Dakota
+7~481>(481)D W-Series pickup
+7~482>(482)Ram Pickup
+7~498>(498)Other (light truck)
+7~499>(499)Unknown (light truck)
+7~850>(850)Motor Home
+7~870>(870)Medium/Heavy Van-Based Vehicle
+7~880>(880)Medium/Heavy Pickup (pickup-style only – over 10000 lbs)
+7~881>(881)Medium/Heavy – CBE
+7~882>(882)Medium/Heavy – COE low entry
+7~883>(883)Medium/Heavy – COE high entry
+7~884>(884)Medium/Heavy –Unknown engine location
+7~890>(890)Medium/Heavy – COE entry position unknown
+7~898>(898)Other (medium/heavy truck)
+7~899>(899)Unknown(medium/heavytrunc)
+7~981>(981)Bus**: Conventional  (Engine out front)
+
+7~988>(988)Other (bus)
+7~997>(997)Not Reported
+7~998>(998)Other (vehicle)
+7~999>(999)Unknown (DODGE)
+8~-1>(-1)Blank
+8~10>(10)Imperial
+8~398>(398)Other (automobile
+8~399>(399)Unknown (automobile)
+8~997>(997)Not Reported
+9~-1>(-1)Blank
+9~1>(1)Valiant/Scamp/Duster (thru 1976)
+9~2>(2)Satellite/Belvedere
+9~3>(3)Fury (Fury Gran thru &#39;78)
+9~4>(4)Gran Fury (&#39;80 on)
+9~5>(5)Barracuda
+9~6>(6)Volare&#39;
+9~7>(7)Caravelle
+9~8>(8)Horizon/Turismo
+9~11>(11)Reliant (K)
+9~13>(13)Scamp-(car-based p/u)
+9~17>(17)Sundance
+9~19>(19)Acclaim
+9~20>(20)Neon (2002 and on see Dodge)
+9~31>(31)Cricket
+9~32>(32)Arrow
+9~33>(33)Sapporo
+9~34>(34)Champ/Colt import (includes 2WD Vista)
+9~35>(35)Conquest
+9~37>(37)Laser
+9~38>(38)Breeze
+9~39>(39)Prowler (2002 and on see Chrysler)
+9~398>(398)Other (automobile)
+9~399>(399)Unknown (automobile)
+9~421>(421)Trailduster
+9~441>(441)Vista Van
+9~442>(442)Voyager (minivan) (2001 and on see Chrysler)
+9~461>(461)Van-fullsize (B-series)
+9~471>(471)Arrow pickup (foreign)
+9~498>(498)Other (light truck)
+9~499>(499)Unknown (light truck)
+9~997>(997)Not Reported
+9~998>(998)Other (vehicle)
+9~999>(999)Unknown (PLYMOUTH)
+10~-1>(-1)Blank
+10~34>(34)Summit (excludes wagon)
+10~37>(37)Talon
+10~40>(40)Premier
+10~41>(41)Vision
+10~44>(44)Medallion
+10~45>(45)Summit Wagon
+10~398>(398)Other (automobile)
+10~399>(399)Unknown (automobile)
+10~997>(997)Not Reported
+12~-1>(-1)Blank
+12~1>(1)Falcon
+12~2>(2)Fairlane
+12~3>(3)Mustang/Mustang II
+12~4>(4)Thunderbird (all sizes)
+12~5>(5)LTD II
+12~6>(6)LTD/Custom/Galaxy (all sizes)
+12~7>(7)Ranchero
+12~8>(8)Maverick
+12~9>(9)Pinto
+12~10>(10)Torino/Gran Torino/Elite
+12~11>(11)Granada
+12~12>(12)Fairmont
+12~13>(13)Escort/EXP/ZX2
+12~15>(15)Tempo
+12~16>(16)Crown Victoria
+12~17>(17)Taurus/Taurus X
+12~18>(18)Probe
+12~21>(21)Five Hundred
+12~22>(22)Freestyle
+12~23>(23)Fusion
+12~24>(24)Edge
+12~25>(25)Flex
+12~26>(26)City
+12~31>(31)English Ford
+12~32>(32)Fiesta
+12~33>(33)Festiva
+12~34>(34)Laser
+12~35>(35)Contour
+12~36>(36)Aspire
+12~37>(37)Focus
+12~38>(38)GT
+12~398>(398)Other (automobile)
+12~399>(399)Unknown (automobile)
+12~401>(401)Bronco (thru 1977)/Bronco II/Explorer/Explorer Sport
+12~402>(402)Escape
+12~421>(421)Bronco-fullsize (1978-on)
+12~422>(422)Expedition
+12~423>(423)Excursion
+12~441>(441)Aerostar
+12~442>(442)Windstar
+12~443>(443)Freestar
+12~444>(444)Transit Connect
+12~461>(461)E-Series Van/Econoline
+12~470>(470)Van Derivative
+12~471>(471)Ranger
+12~472>(472)Courier
+12~473>(473)Explorer Sport Trac
+12~481>(481)F-Series pickup
+12~498>(498)Other (light truck)
+12~499>(499)Unknown (light truck)
+12~850>(850)Motorhome
+12~870>(870)Medium/Heavy Van-Based Vehicle
+12~880>(880)Medium/Heavy Pickup (pickup-style only - over 10000 lbs)
+12~881>(881)Medium/Heavy – CBE
+12~882>(882)Medium/Heavy – COE low entry
+12~883>(883)Medium/Heavy – COE high entry
+12~884>(884)Medium/Heavy – Unknown engine location
+12~890>(890)Medium/Heavy – COE entry position unknown
+12~898>(898)Other (medium/heavy truck)
+12~899>(899)Unknown (medium/heavy truck)
+12~981>(981)Bus**: Conventional (Engine out front)
+12~988>(988)Other (bus)
+12~997>(997)Not Reported
+12~998>(998)Other (vehicle)
+12~999>(999)Unknown (FORD)
+13~-1>(-1)Blank
+13~1>(1)Continental (thru &#39;81)/ Town Car
+13~2>(2)Mark
+13~5>(5)Continental (&#39;82 on)
+13~11>(11)Versailles
+13~12>(12)LS
+13~13>(13)Zephyr/MKZ
+13~14>(14)MKX
+13~15>(15)MKS
+13~16>(16)MKT
+13~398>(398)Other (automobile)
+13~399>(399)Unknown (automobile)
+13~401>(401)Aviator
+13~421>(421)Navigator
+13~481>(481)Blackwood
+13~482>(482)Mark LT
+13~499>(499)Unknown (light truck)
+13~997>(997)Not Reported
+13~999>(999)Unknown (LINCOLN)
+14~-1>(-1)Blank
+14~2>(2)Cyclone
+14~3>(3)Capri- domestic (1967 see 008)
+14~4>(4)Cougar/XR7 (1967-1997)
+14~6>(6)Marquis/Monterey (car version; for van version 2004 on see code 444) /Grand Marquis
+14~8>(8)Comet
+14~9>(9)Bobcat
+14~10>(10)Montego (prior to 1976; for 2005 on see code 020)
+14~11>(11)Monarch
+14~12>(12)Zephyr
+14~13>(13)Lynx/LN7
+14~15>(15)Topaz
+14~17>(17)Sable
+14~20>(20)Montego (2005 on)
+14~21>(21)Milan
+14~31>(31)Capri-foreign
+14~33>(33)Pantera-foreign
+14~36>(36)Tracer
+14~37>(37)Mystique
+14~38>(38)Cougar (1999 on)
+14~39>(39)Marauder
+14~398>(398)Other (automobile)
+14~399>(399)Unknown (automobile)
+14~401>(401)Mountaineer
+14~402>(402)Mariner
+14~443>(443)Villager
+14~444>(444)Monterey (van version; for car version prior to 2004 see code 006)
+14~498>(498)Other (light truck)
+14~499>(499)Unknown (light truck)
+14~997>(997)Not Reported
+14~999>(999)Unknown (MERCURY)
+18~-1>(-1)Blank
+18~1>(1)Special/Skylark
+18~2>(2)LeSabre/Centurion/ Estate Wagon Invicta Custom Limited T-Type Ltd C.M.I LE
+18~3>(3)Electra/Electra 225/ Park Limited Park Avenue Ultra Base
+18~4>(4)Roadmaster
+18~5>(5)Riviera
+18~7>(7)Century
+18~8>(8)Apollo/Skylark
+18~10>(10)Regal (RWD only)
+18~12>(12)Skyhawk
+18~15>(15)Skylark (76-85)
+18~18>(18)Somerset/Skylark
+18~20>(20)Regal (FWD)
+18~21>(21)Reatta
+18~22>(22)LaCrosse
+18~23>(23)Lucerne
+18~24>(24)Enclave (2008-12 model years only.  For 2013 on see model 403.)
+18~31>(31)Opel Kadett
+18~32>(32)Opel Manta
+18~33>(33)Opel GT
+18~34>(34)Opel Isuzu
+18~398>(398)Other (automobile)
+18~399>(399)Unknown (automobile)
+18~401>(401)Rendezvous
+18~402>(402)Rainier
+18~441>(441)Terraza
+18~498>(498)Other (light truck)
+18~499>(499)Unknown (light truck)
+18~997>(997)Not Reported
+18~999>(999)Unknown BUICK
+19~-1>(-1)Blank
+19~3>(3)Deville/FleetwoodCoupe de Ville Sedan de Ville Fleetwood Brougham Fleetwood 60 Special d&#39;Elegan
+19~4>(4)Limousine
+19~5>(5)Eldorado
+19~6>(6)Commercial Series
+19~9>(9)Allante&#39;
+19~14>(14)Seville
+19~16>(16)Cimarron
+19~17>(17)Catera
+19~18>(18)CTS/CTC
+19~19>(19)XLR
+19~20>(20)SRX
+19~21>(21)STS
+19~22>(22)DTS
+19~398>(398)Other (automobile)
+19~399>(399)Unknown (automobile)
+19~401>(401)BRX
+19~421>(421)Escalade/ESV (from 2004 on; see 431 for 2003 only)
+19~431>(431)Escalade ESV
+19~480>(480)Escalade EXT (from 2002 -2006; for 2007 on see 481)
+19~481>(481)Escalade EXT (from 2007 on; see 480 for 2002-2006)
+19~498>(498)Other (light truck)
+19~499>(499)Unknown (light truck)
+19~997>(997)Not Reported
+19~999>(999)Unknown CADILLAC
+20~-1>(-1)Blank
+20~1>(1)Chevelle/Malibu Classic Councours Laguna** S-3 Greenbriar Estate 300SS-396/454 Deluxe
+20~2>(2)Impala/Caprice
+20~4>(4)Corvette
+20~6>(6)Corvair
+20~7>(7)El Camino
+20~8>(8)Nova (-&#39;79)
+20~9>(9)Camaro
+20~10>(10)Monte Carlo (thru &#39;88)
+20~11>(11)Vega
+20~12>(12)Monza
+20~13>(13)Chevette
+20~15>(15)Citation
+20~16>(16)Cavalier
+20~17>(17)Celebrity
+20~19>(19)Beretta/Corsica
+20~20>(20)Lumina
+20~22>(22)Cobalt
+20~23>(23)HHR
+20~24>(24)Traverse (2009-2012 only.  For 2013 on see model 423.)
+20~25>(25)Cruze
+20~26>(26)Volt
+20~27>(27)Caprice PPV
+20~31>(31)Spectrum
+20~32>(32)Nova/Geo Prizm/Prism
+20~33>(33)Sprint/Geo Sprint
+20~34>(34)Geo Metro/Metro
+20~35>(35)Geo Storm
+20~36>(36)Monte Carlo (1995 on)
+20~37>(37)Malibu/Malibu Maxx
+20~38>(38)SSR
+20~39>(39)Aveo/Aveo 5
+20~398>(398)Other (automobile)
+20~399>(399)Unknown (automobile)
+20~401>(401)S-10 Blazer/TrailBlazer (2002 only; for 2003 on see 403)
+20~402>(402)Geo Tracker/Tracker
+20~403>(403)TrailBlazer (2003 on; for 2002 model see 401)
+20~404>(404)Equinox
+20~421>(421)Fullsize Blazer/Tahoe
+20~422>(422)Suburban (from 2004 on; see 431 for 1950-2003)
+20~431>(431)Suburban (from 1950-2003;see 422 for 2004 on)
+20~441>(441)Astro Van
+20~442>(442)Lumina APV
+20~443>(443)Venture
+20~444>(444)Uplander
+20~461>(461)G-series van
+20~466>(466)P-series van
+20~470>(470)Van derivative
+20~471>(471)S-10/T-10 Pickup
+20~472>(472)LUV
+20~473>(473)Colorado
+20~481>(481)C K R V-series pickup/Silverado
+20~482>(482)Avalanche
+20~498>(498)Other (light truck)
+20~499>(499)Unknown (light truck)
+20~850>(850)Motor Home
+20~870>(870)Medium/Heavy Van-Based Vehicle
+20~880>(880)Medium/Heavy Pickup (pickup-style only – over 10000 lbs)
+20~881>(881)Medium/Heavy – CBE
+20~882>(882)Medium/Heavy – COE low entry
+20~883>(883)Medium/Heavy – COE high entry
+20~884>(884)Medium/Heavy –Unknown engine location
+20~890>(890)Medium/Heavy – COE entry position unknown
+20~898>(898)Other (medium/heavy truck)
+20~899>(899)Unknown (medium/heavy truck)
+20~981>(981)Bus**: Conventional (Engine out front)
+20~988>(988)Other (bus)
+20~997>(997)Not Reported
+20~998>(998)Other (vehicle)
+20~999>(999)Unknown (CHEVROLET)
+21~-1>(-1)Blank
+21~1>(1)Cutlass (RWD-only)
+21~2>(2)Delta 88/LSS
+21~3>(3)Ninety-Eight/Regency
+21~5>(5)Toronado
+21~6>(6)Commercial Series
+21~12>(12)Starfire
+21~15>(15)Omega
+21~16>(16)Firenza
+21~17>(17)Ciera
+21~18>(18)Calais
+21~20>(20)Cutlass (FWD)
+21~21>(21)Achieva/Alero
+21~22>(22)Aurora
+21~23>(23)Intrigue
+21~398>(398)Other (automobile)
+21~399>(399)Unknown (automobile)
+21~401>(401)Bravada
+21~441>(441)Silhouette
+21~499>(499)Unknown (light truck)
+21~997>(997)Not Reported
+21~999>(999)Unknown (OLDSMOBILE)
+22~-1>(-1)Blank
+22~1>(1)Lemans/ Tempest (thru 1970)
+22~2>(2)Bonneville/Catalina/ Parisienne
+22~5>(5)Fiero
+22~8>(8)Ventura/GTO
+22~9>(9)Firebird/Trans AM
+22~10>(10)Grand Prix (RWD)
+22~11>(11)Astre
+22~12>(12)Sunbird (thru 1980;1985 on see model 016)
+22~13>(13)T-1000/1000
+22~15>(15)Phoenix
+22~16>(16)Sunbird (1985-1994)/J-2000/Sunfire (1995 on)
+22~17>(17)6000
+22~18>(18)Grand AM
+22~19>(19)G5
+22~20>(20)Grand Prix (FWD)
+22~22>(22)G6
+22~23>(23)Solstice
+22~24>(24)G8
+22~25>(25)G3
+22~26>(26)G8-ST
+22~31>(31)Lemans (1988-on)
+22~32>(32)Vibe
+22~398>(398)Other (automobile)
+22~399>(399)Unknown (automobile)
+22~401>(401)Aztek
+22~403>(403)Torrent
+22~441>(441)Trans Sport/ Montana/SV6
+22~499>(499)Unknown (light truck)
+22~997>(997)Not Reported
+22~999>(999)Unknown (PONTIAC)
+23~-1>(-1)Blank
+23~7>(7)Caballero
+23~8>(8)Acadia (2007-2012 only.  For 2013 on see model 423.)
+23~399>(399)Unknown (automobile)
+23~401>(401)Jimmy/Typhoon/Envoy
+23~402>(402)Terrain
+23~421>(421)Fullsize Jimmy/Yukon
+23~422>(422)Suburban/Yukon XL (2004 on; see 431 for 1950- 2003)
+23~431>(431)Suburban/Yukon XL (2000 on) (1950-2003 only; see 422 for 2004 on)
+23~441>(441)Safari (Minivan)
+23~461>(461)G-series van/Savana
+23~466>(466)P-series van
+23~470>(470)Van derivative
+23~471>(471)S15/T15/Sonoma
+23~472>(472)Canyon
+23~481>(481)C K R V-series pickup/     Sierra
+23~498>(498)Other (light truck)
+23~499>(499)Unknown (light truck)
+23~850>(850)Motor Home
+23~870>(870)Medium/Heavy Van-Based Vehicle
+23~880>(880)Medium/Heavy Pickup (pickup-style only - over 10000 lbs
+23~881>(881)Medium/Heavy - CBE
+23~882>(882)Medium/Heavy – COE low entry
+23~883>(883)Medium/Heavy – COE high entry
+23~884>(884)Medium/Heavy – Unknown engine location
+23~890>(890)Medium/Heavy – COE entry position unknown
+23~898>(898)Other (medium/heavy truck)
+23~899>(899)Unknown (medium/heavy truck)
+23~981>(981)Bus**: Conventional (Engine out front)
+23~988>(988)Other (bus)
+23~997>(997)Not Reported
+23~998>(998)Other (vehicle)
+23~999>(999)Unknown (GMC)
+24~-1>(-1)Blank
+24~1>(1)SL
+24~2>(2)SC
+24~3>(3)SW
+24~4>(4)EV1/EGV1*
+24~5>(5)LS
+24~6>(6)LW
+24~7>(7)Ion
+24~8>(8)Sky
+24~9>(9)Aura
+24~10>(10)Outlook
+24~11>(11)Astra
+24~398>(398)Other (automobile)
+24~399>(399)Unknown (automobile)
+24~401>(401)Vue
+24~441>(441)Relay
+24~499>(499)Unknown (Light truck)
+24~997>(997)Not Reported
+24~999>(999)Unknown (SATURN)
+25~-1>(-1)Blank
+25~401>(401)LLV
+25~441>(441)Step-in van
+25~498>(498)Other (light truck)
+25~499>(499)Unknown (light truck)
+25~881>(881)Medium/Heavy – CBE
+25~882>(882)Medium/Heavy - COE low entry
+25~883>(883)Medium/Heavy - COE high entry
+25~884>(884)Medium/Heavy - engine location unknown
+25~890>(890)Medium/Heavy - entry position unknown
+25~898>(898)Other (Medium/Heavy truck)
+25~899>(899)Unknown (Medium/Heavy truck)
+25~983>(983)Bus: Flat front rear engine
+25~988>(988)Other (bus)
+25~997>(997)Not Reported
+25~999>(999)Unknown (GRUMMAN/ GRUMMAN-OLSON)
+29~-1>(-1)Blank
+29~1>(1)Studabaker/Avanti
+29~2>(2)Checker
+29~3>(3)Panoz
+29~4>(4)Saleen
+29~398>(398)Other (automobile)
+29~399>(399)Unknown Make
+29~997>(997)Not Reported
+30~-1>(-1)Blank
+30~31>(31)Karmann Ghia
+30~32>(32)Beetle 1300/1500
+30~33>(33)Super Beetle
+30~34>(34)411/412
+30~35>(35)Squareback/Fastback
+30~36>(36)Rabbit
+30~37>(37)Dasher
+30~38>(38)Scirocco
+30~40>(40)Jetta/Jetta SportsWagen
+30~41>(41)Quantum
+30~42>(42)Golf/Cabriolet/Cabrio/GTI
+30~43>(43)Rabbit Pickup
+30~44>(44)Fox
+30~45>(45)Corrado
+30~46>(46)Passat (CC - 2008 thru 2011; see 052 for 2012 on)
+30~47>(47)New Beetle
+30~48>(48)Phaeton
+30~51>(51)Eos
+30~52>(52)Polo
+30~398>(398)Other (automobile)
+30~399>(399)Unknown (automobile)
+30~401>(401)The Thing (181)
+30~402>(402)Tiguan
+30~421>(421)Touareg/Tourareg 2
+30~441>(441)Vanagon/Camper
+30~442>(442)Eurovan
+30~443>(443)Routan
+30~498>(498)Other (light truck)
+30~499>(499)Unknown (light truck)
+30~997>(997)Not Reported
+30~998>(998)Other (vehicle)
+30~999>(999)Unknown
+31~-1>(-1)Blank
+31~31>(31)Spider (Spyder)
+31~32>(32)Sports Sedan
+31~33>(33)Sprint/Special
+31~34>(34)GTV-6
+31~35>(35)164 (Alpha 164)
+31~398>(398)Other (automobile)
+31~399>(399)Unknown (automobile)
+31~997>(997)Not Reported
+32~-1>(-1)Blank
+32~31>(31)Super 90
+32~32>(32)100
+32~33>(33)Fox
+32~34>(34)4000
+32~35>(35)5000
+32~36>(36)80/90
+32~37>(37)200
+32~38>(38)V-8 Quattro
+32~39>(39)Coupe Quattro
+32~40>(40)S4 (1992-1994; 2000-2011 only. See model 055 for 2012 on)/S6 (1992-1994; 2000-2011 only.  See model 057 for 2013 on.)
+32~41>(41)Cabriolet (1994-1998)
+32~42>(42)A6
+32~43>(43)A4
+32~44>(44)A8
+32~45>(45)TT/TTS
+32~46>(46)S8
+32~47>(47)Allroad (2001-2005)
+32~48>(48)A3
+32~49>(49)A5
+32~50>(50)R8
+32~51>(51)A7
+32~52>(52)S5
+32~54>(54)RS5
+32~398>(398)Other (automobile)
+32~399>(399)Unknown (automobile)
+32~401>(401)Q7
+32~402>(402)Q5
+32~499>(499)Unknown (light truck)
+32~997>(997)Not Reported
+32~999>(999)Unknown (AUDI)
+33~-1>(-1)Blank
+33~31>(31)Marina
+33~32>(32)America
+33~33>(33)Healey Sprite
+33~34>(34)Healey 100/3000
+33~35>(35)Mini/Mini Cooper/Mini Moke
+33~398>(398)Other (automobile)
+33~399>(399)Unknown (automobile)
+33~997>(997)Not Reported
+34~-1>(-1)Blank
+34~31>(31)1600 1800 20002002
+34~32>(32)Coupe (before 1975)
+34~33>(33)Bavarian Sedan
+34~34>(34)3-series
+34~35>(35)5-series
+34~36>(36)6-series
+34~37>(37)7-series
+34~38>(38)8-series
+34~39>(39)Z3
+34~40>(40)Z8
+34~41>(41)V5
+34~42>(42)Z4
+34~43>(43)1-Series
+34~44>(44)X6
+34~398>(398)Other (automobile)
+34~399>(399)Unknown (automobile)
+34~401>(401)X5
+34~402>(402)X3
+34~403>
+34~499>(499)Unknown (light truck)
+34~703>(703)125-349cc
+34~705>(705)450-749cc
+34~706>(706)750cc and over
+34~709>(709)Unknown cc
+34~997>(997)Not Reported
+34~999>(999)Unknown (BMW)
+35~-1>(-1)Blank
+35~31>(31)F-10
+35~32>(32)200SX/240SX
+35~33>(33)210/1200/B210
+35~34>(34)Z-car ZX
+35~35>(35)310
+35~36>(36)510
+35~37>(37)610
+35~38>(38)710
+35~39>(39)810/Maxima
+35~40>(40)Roadster
+35~41>(41)311/411
+35~42>(42)Stanza
+35~43>(43)Sentra
+35~44>(44)Pulsar
+35~45>(45)Micra
+35~46>(46)NX 1600/2000
+35~47>(47)Altima
+35~48>(48)350Z/370Z
+35~49>(49)Murano
+35~50>(50)Versa
+35~51>(51)Rogue
+35~52>(52)Cube
+35~53>(53)GT-R
+35~55>(55)Leaf
+35~398>(398)Other (automobile)
+35~399>(399)Unknown (automobile)
+35~401>(401)Pathfinder
+35~402>(402)Xterra
+35~403>(403)Juke
+35~421>(421)Pathfinder Armada
+35~441>(441)Van
+35~442>(442)Axxess
+35~443>(443)Quest
+35~444>(444)Altra EV*
+35~445>(445)NV
+35~461>(461)NV
+35~471>(471)Datsun/Nissan Pickup 1955-1997)
+35~472>(472)Frontier (1998 on)
+35~473>(473)Titan (from 2004-06; see 481 for 2007 on)
+35~481>(481)Titan (from 2007 on; see 473 for 2004-06)
+35~498>(498)Other (light truck)
+35~499>(499)Unknown (light truck)
+35~870>(870)Medium Heavy Van-Based Vehicle
+35~883>(883)Medium/Heavy – COE high entry
+35~898>(898)Other (medium/heavy truck)
+35~899>(899)Unknown (medium/heavy truck)
+35~997>(997)Not Reported
+35~999>(999)Unknown (NISSAN/DATSUN)
+36~-1>(-1)Blank
+36~31>(31)124 (Coupe/Sedan)
+36~32>(32)124 Spider/Racer
+36~33>(33)Brava/131
+36~34>(34)850 (Coupe/Spider)
+36~35>(35)128
+36~36>(36)X-1/9
+36~37>(37)Strada
+36~38>(38)500
+36~398>(398)Other (automobile)
+36~399>(399)Unknown (automobile)
+36~882>(882)Medium/Heavy – COE low entry
+36~883>(883)Medium/Heavy – COE high entry
+36~890>(890)Medium/Heavy – COE entry position unknown
+36~898>(898)Other (medium/heavy truck)
+36~899>(899)Unknown (medium/heavy truck)
+36~997>(997)Not Reported
+36~998>(998)Other (vehicle)
+36~999>(999)Unknown (FIAT)
+37~-1>(-1)Blank
+37~31>(31)Civic/CRX del Sol
+37~32>(32)Accord
+37~33>(33)Prelude
+37~34>(34)600
+37~35>(35)S2000
+37~36>(36)EV Plus*
+37~37>(37)Insight
+37~38>(38)FCX
+37~39>(39)Fit
+37~41>(41)CR-Z
+37~398>(398)Other (automobile)
+37~399>(399)Unknown (automobile)
+37~401>(401)Passport
+37~402>(402)CR-V
+37~403>(403)Element
+37~421>(421)Pilot
+37~441>(441)Odyssey
+37~471>(471)Ridgeline
+37~498>(498)Other (light truck)
+37~499>(499)Unknown (light truck)
+37~701>(701)0- 50 cc
+37~702>(702)51-124 cc
+37~703>(703)125-349 cc
+37~704>(704)350-449 cc
+37~705>(705)450-749 cc
+37~706>(706)750 cc or greater
+37~709>(709)Unknown cc
+37~732>(732)51-124cc
+37~733>(733)125-349cc
+37~734>(734)350cc or greater
+37~739>(739)Unknown cc
+37~997>(997)Not Reported
+37~998>(998)(Other Vehicle)
+37~999>(999)Unknown (HONDA)
+38~-1>(-1)Blank
+38~31>(31)I-Mark
+38~32>(32)Impulse
+38~33>(33)Stylus
+38~398>(398)Other (automobile)
+38~399>(399)Unknown (automobile)
+38~401>(401)Trooper/Trooper II
+38~402>(402)Rodeo/ Rodeo Sport
+38~403>(403)Amigo
+38~404>(404)VehiCROSS
+38~405>(405)Axiom
+38~421>(421)Ascender
+38~441>(441)Oasis
+38~471>(471)P&#39;up (pickup)
+38~472>(472)Hombre
+38~473>(473)i-280
+38~474>(474)i-350
+38~498>(498)Other (light truck)
+38~499>(499)Unknown (light truck)
+38~881>(881)Medium/Heavy – CBE
+38~882>(882)Medium/Heavy – COE low entry
+38~883>(883)Medium/Heavy – COE high entry
+38~884>(884)Medium/Heavy – Unknown engine location
+38~890>(890)Medium/Heavy – COE entry position unknown
+38~898>(898)Other (medium/heavy truck)
+38~899>(899)Unknown (medium/heavy truck)
+38~981>(981)Bus**: Conventional (Engine out front)
+38~982>(982)Bus: Front engine Flat front
+38~983>(983)Bus: Rear engine Flat front
+38~988>(988)Other (bus)
+38~997>(997)Not Reported
+38~999>(999)Unknown (ISUZU)
+39~-1>(-1)Blank
+39~31>(31)XJ-S XK8 Coupe
+39~32>(32)XJ/XJ6/12/XJR/XJ8/  XJ8L Sedan/Coupe
+39~33>(33)XK-E
+39~34>(34)S-Type
+39~35>(35)XKR/XK
+39~36>(36)X-Type
+39~37>(37)XF/XFR
+39~398>(398)Other (automobile)
+39~399>(399)Unknown (automobile)
+39~997>(997)Not Reported
+40~-1>(-1)Blank
+40~31>(31)Beta Sedan – HPE
+40~32>(32)Zagato
+40~33>(33)Scorpion
+40~398>(398)Other (automobile)
+40~399>(399)Unknown (automobile)
+40~997>(997)Not Reported
+41~-1>(-1)Blank
+41~31>(31)RX2
+41~32>(32)RX3
+41~33>(33)RX4
+41~34>(34)RX7
+41~35>(35)323/GLC/ Prot&#233;g&#233;/ Prot&#233;g&#233;5
+41~36>(36)Cosmo
+41~37>(37)626
+41~38>(38)808
+41~39>(39)Mizer
+41~40>(40)R-100
+41~41>(41)616/618
+41~42>(42)1800
+41~43>(43)929
+41~44>(44)MX-6
+41~45>(45)Miata/MX-5
+41~46>(46)MX-3
+41~47>(47)Millenia
+41~48>(48)MP3
+41~49>(49)RX-8
+41~50>(50)Mazda6
+41~51>(51)Mazda3
+41~52>(52)Mazda5
+41~53>(53)CX-7
+41~54>(54)CX-9 (2007-12 only.For 2013 on see model 421.)
+41~55>(55)Mazda2
+41~398>(398)Other (automobile)
+41~399>(399)Unknown (automobile)
+41~401>(401)Navajo
+41~402>(402)Tribute
+41~441>(441)MPV
+41~471>(471)Pickup/ B-Series Pickup
+41~498>(498)Other (light truck)
+41~499>(499)Unknown (light truck)
+41~997>(997)Not Reported
+41~999>(999)Unknown (MAZDA)
+42~-1>(-1)Blank
+42~31>(31)200/220/230/240/ 250/260/280/300/ 320/420
+42~32>(32)230/280 SL
+42~33>(33)300/350/380/450/500/ 560 SL
+42~34>(34)350/380/420/450/560 SLC
+42~35>(35)280/300 SEL
+42~36>(36)300/380/420/450/500/560/SEL &amp; 500/560 600 SEC &amp; 300/350 SDL
+42~37>(37)300/380/450 SE
+42~38>(38)600 6.9 Sedan
+42~39>(39)190
+42~40>(40)300
+42~41>(41)400/500E
+42~42>(42)C Class (94 on)
+42~43>(43)S Class (95 on)
+42~44>(44)SL Class (95 on)
+42~45>(45)SLK
+42~46>(46)CL Class
+42~47>(47)CLK
+42~48>(48)E Class (97 on)
+42~49>(49)SLR
+42~50>(50)R Class
+42~51>(51)CLS Class
+42~52>(52)SLS Class
+42~398>(398)Other (automobile)
+42~399>(399)Unknown (automobile)
+42~401>(401)M/ML Class
+42~402>(402)G Class
+42~403>(403)GLK Class
+42~421>(421)GL Class
+42~461>(461)SPRINTER
+42~470>(470)Van derivative
+42~498>(498)Other (light truck)
+42~499>(499)Unknown (light truck)
+42~870>(870)Medium Heavy Van-Based Vehicle
+42~881>(881)Medium/Heavy - CBE
+42~882>(882)Medium/Heavy – COE low entry
+42~883>(883)Medium/Heavy – COE high entry
+42~884>(884)Medium/Heavy – Unknown engine location
+42~890>(890)Medium/Heavy – COE entry position unknown
+42~898>(898)Other (medium/heavy truck)
+42~899>(899)Unknown (medium/heavy truck)
+42~981>(981)Bus**: Conventional (Engine out front)
+42~988>(988)Other (bus)
+42~989>(989)Unknown (bus)
+42~997>(997)Not Reported
+42~998>(998)Other (vehicle)
+42~999>(999)Unknown (MERCEDES-BENZ)
+43~-1>(-1)Blank
+43~31>(31)Midget
+43~32>(32)MGB
+43~33>(33)MGB
+43~34>(34)MGA
+43~35>(35)TA/TC/TD/TF
+43~36>(36)MGC
+43~37>(37)Magnette/Sports Sedans
+43~398>(398)Other (automobile)
+43~399>(399)Unknown (automobile)
+43~997>(997)Not Reported
+44~-1>(-1)Blank
+44~31>(31)304
+44~32>(32)403
+44~33>(33)404
+44~34>(34)504/505
+44~35>(35)604
+44~36>(36)405
+44~398>(398)Other (automobile)
+44~399>(399)Unknown (automobile)
+44~701>(701)0 - 50 cc
+44~702>(702)51-124cc
+44~709>(709)Unknown cc
+44~997>(997)Not Reported
+44~999>(999)Unknown (PEUGEOT)
+45~-1>(-1)Blank
+45~31>(31)911/996
+45~32>(32)912
+45~33>(33)914
+45~34>(34)924
+45~35>(35)928
+45~36>(36)930
+45~37>(37)944
+45~38>(38)959
+45~39>(39)968
+45~40>(40)986/Boxster
+45~41>(41)Cayman
+45~42>(42)Panamera
+45~398>(398)Other (automobile)
+45~399>(399)Unknown (automobile)
+45~421>(421)Cayenne
+45~997>(997)Not Reported
+45~999>(999)Unknown(PORSCHE)
+46~-1>(-1)Blank
+46~31>(31)LeCar
+46~32>(32)Dauphine/10/R-8 Caravelle
+46~33>(33)12
+46~34>(34)15
+46~35>(35)16
+46~36>(36)17
+46~37>(37)18i/Sportwagon
+46~38>(38)Fuego TL TS GTL GTS Turbo
+46~38>(38)Fuego
+46~39>(39)Alliance/Encore GTA Convertible
+46~41>(41)Alpine
+46~44>(44)Medallion **
+46~45>(45)Premier**
+46~398>(398)Other (automobile)
+46~399>(399)Unknown (automobile)
+46~997>(997)Not Reported
+47~-1>(-1)Blank
+47~31>(31)99/99E/900
+47~32>(32)Sonnett
+47~33>(33)95/96
+47~34>(34)9000
+47~35>(35)9-3/9-3X
+47~36>(36)9-5
+47~37>(37)9-2X
+47~38>(38)9-4X
+47~398>(398)Other (automobile)
+47~399>(399)Unknown (automobile)
+47~401>(401)9-7x
+47~997>(997)Not Reported
+47~999>(999)Unknown(SAAB)
+48~-1>(-1)Blank
+48~31>(31)Loyale (1990 on)/DL/ FE/G/GF/GL/GLF/STD
+48~32>(32)Star
+48~33>(33)360
+48~34>(34)Legacy/Outback(prior to 2003 only; see 045 for 2003 on)
+48~35>(35)XT/XT6
+48~36>(36)Justy
+48~37>(37)SVX
+48~38>(38)Impreza
+48~39>(39)RX
+48~43>(43)Brat
+48~44>(44)Baja
+48~45>(45)Outback (2003 on)(see 034 for prior to 2003)
+48~398>(398)Other (automobile)
+48~399>(399)Unknown (automobile)
+48~401>(401)Forester
+48~402>(402)B9 Tribeca
+48~499>(499)Unknown (light truck)
+48~997>(997)Not Reported
+48~999>(999)Unknown (SUBARU)
+49~-1>(-1)Blank
+49~31>(31)Corona
+49~32>(32)Corolla
+49~33>(33)Celica
+49~34>(34)Supra
+49~35>(35)Cressida
+49~36>(36)Crown
+49~37>(37)Carina
+49~38>(38)Tercel
+49~39>(39)Starlet
+49~40>(40)Camry
+49~41>(41)MR-2/MR Spyder
+49~42>(42)Paseo
+49~43>(43)Avalon
+49~44>(44)Solara
+49~45>(45)ECHO
+49~46>(46)Prius *
+49~47>(47)Matrix
+49~48>(48)Scion xA
+49~49>(49)Scion xB
+49~50>(50)Scion tC
+49~51>(51)Yaris
+49~52>(52)Scion xD
+49~53>(53)Venza
+49~54>(54)Scion iQ
+49~398>(398)Other (automobile)
+49~399>(399)Unknown (automobile)
+49~401>(401)4-Runner
+49~402>(402)RAV4 *
+49~403>(403)Highlander
+49~404>(404)FJ Cruiser
+49~421>(421)Land Cruiser
+49~422>(422)Sequoia
+49~441>(441)Minivan (1984-90)/ Previa (1991 on)
+49~442>(442)Sienna
+49~471>(471)Pickup
+49~472>(472)Tacoma
+49~481>(481)T-100
+49~482>(482)Tundra
+49~498>(498)Other (light truck)
+49~499>(499)Unknown (light truck)
+49~997>(997)Not Reported
+49~999>(999)Unknown (TOYOTA)
+50~-1>(-1)Blank
+50~31>(31)Spitfire
+50~32>(32)GT-6
+50~33>(33)TR4
+50~34>(34)TR6
+50~35>(35)TR7/TR8
+50~36>(36)Herald
+50~37>(37)Stag
+50~398>(398)Other (automobile)
+50~399>(399)Unknown (automobile)
+50~701>(701)0-50cc
+50~702>(702)51-124cc
+50~703>(703)125-349cc
+50~704>(704)350-449cc
+50~705>(705)450-749cc
+50~706>(706)750cc or greater
+50~709>(709)Unknown cc
+50~799>(799)Unknown (motored cycle)
+50~997>(997)Not Reported
+50~999>(999)Unknown (TRIUMPH)
+51~-1>(-1)Blank
+51~31>(31)122
+51~32>(32)140/142/144/145 *
+51~33>(33)164
+51~34>(34)240 series*/DL/GL/GLT
+51~35>(35)260 series/GLE
+51~36>(36)1800
+51~37>(37)PV544
+51~38>(38)760/780
+51~39>(39)740
+51~40>(40)940
+51~41>(41)960
+51~42>(42)850
+51~43>(43)70 Series
+51~44>(44)90 Series
+51~45>(45)80 Series
+51~46>(46)40 Series
+51~47>(47)60 Series
+51~48>(48)V50
+51~49>(49)C30
+51~50>(50)XC60
+51~398>(398)Other (automobile)
+51~399>(399)Unknown (automobile)
+51~401>(401)XC90
+51~881>(881)Medium/Heavy – CBE
+51~882>(882)Medium/Heavy - COE low entry
+51~883>(883)Medium/Heavy - COE high entry
+51~884>(884)Medium/Heavy – Unknown engine location
+51~890>(890)Medium/Heavy – COE entry position unknown
+51~898>(898)Other (medium/heavy truck)
+51~899>(899)Unknown (medium/heavy truck)
+51~981>(981)Bus**: Conventional (Engine out front)
+51~988>(988)Other (bus)
+51~997>(997)Not Reported
+51~999>(999)Unknown (VOLVO)
+52~-1>(-1)Blank
+52~31>(31)Starion
+52~32>(32)Tredia
+52~33>(33)Cordia
+52~34>(34)Galant
+52~35>(35)Mirage
+52~36>(36)Precis
+52~37>(37)Eclipse
+52~38>(38)Sigma
+52~39>(39)3000 GT
+52~40>(40)Diamante
+52~45>(45)Expo Wagon
+52~46>(46)Lancer/Lancer Sportback/ Lancer Evolution
+52~47>(47)Outlander
+52~398>(398)Other (automobile)
+52~399>(399)Unknown (automobile)
+52~401>(401)Montero/Montero Sport
+52~402>(402)Endeavor
+52~441>(441)Mini-Van
+52~471>(471)Pickup
+52~472>(472)Raider
+52~498>(498)Other (light truck)
+52~499>(499)Unknown (light truck)
+52~882>(882)Medium/Heavy – COE low entry
+52~898>(898)Other (medium/heavy truck)
+52~899>(899)Unknown (medium/heavy truck
+52~981>(981)Bus**: Conventional (Engine out front)
+52~982>(982)Bus: Front engine Flat Front
+52~983>(983)Bus: Rear engine Flat front
+52~988>(988)Other (bus)
+52~997>(997)Not Reported
+52~999>(999)Unknown (MITSUBISHI)
+53~-1>(-1)Blank
+53~31>(31)Swift/SA310
+53~32>(32)Esteem
+53~33>(33)Aerio
+53~34>(34)Forenza
+53~35>(35)Verona
+53~36>(36)Reno
+53~40>(40)SX4
+53~41>(41)Kizashi
+53~398>(398)Other (automobile)
+53~399>(399)Unknown (automobile)
+53~401>(401)Samurai
+53~402>(402)Sidekick/Vitara/ Vitara V6
+53~403>(403)X-90
+53~404>(404)Grand Vitara (2003 on; see model 402 for models prior to 2003)
+53~405>(405)XL-7 (2003 on; see 402 for 2002 model year)
+53~481>(481)Equator
+53~498>(498)Other (light truck)
+53~499>(499)Unknown (light truck)
+53~701>(701)0-50cc
+53~702>(702)51-124cc
+53~703>(703)125-349cc
+53~704>(704)350-449cc
+53~705>(705)450-749cc
+53~706>(706)750cc-over
+53~709>(709)Unknown cc
+53~731>(731)0-50cc
+53~732>(732)51-124cc
+53~733>(733)125-349cc
+53~734>(734)350cc or greater
+53~739>(739)Unknown cc
+53~997>(997)Not Reported
+53~999>(999)Unknown (SUZUKI)
+54~-1>(-1)Blank
+54~31>(31)Integra
+54~32>(32)Legend
+54~33>(33)NSX
+54~34>(34)Vigor
+54~35>(35)TL
+54~36>(36)RL / RLX
+54~37>(37)CL
+54~38>(38)RSX
+54~39>(39)TSX
+54~40>(40)ZDX
+54~398>(398)Other (automobile)
+54~399>(399)Unknown (automobile)
+54~401>(401)SLX
+54~402>(402)RDX
+54~421>(421)MDX
+54~499>(499)Unknown (light truck)
+54~997>(997)Not Reported
+54~999>(999)Unknown (ACURA)
+55~-1>(-1)Blank
+55~31>(31)Pony
+55~32>(32)Excel
+55~33>(33)Sonata
+55~34>(34)Scoupe
+55~35>(35)Elantra
+55~36>(36)Accent
+55~37>(37)Tiburon
+55~38>(38)XG300(2001)/ XG350(2002 on)
+
+55~39>(39)Azera
+55~40>(40)Equus
+55~41>(41)Genesis
+55~398>(398)Other (automobile)
+55~399>(399)Unknown (automobile)
+55~401>(401)Santa Fe
+55~402>(402)Tucson
+55~403>(403)Veracruz (2007 only)
+55~421>(421)Veracruz  (2008 on; see 403 for 2007 only)
+55~441>(441)Entourage
+55~499>(499)Unknown (light truck)
+55~997>(997)Not Reported
+55~999>(999)Unknown (HYUNDAI)
+56~-1>(-1)Blank
+56~31>(31)XR4Ti
+56~32>(32)Scorpio
+56~398>(398)Other (automobile)
+56~399>(399)Unknown (automobile)
+56~997>(997)Not Reported
+57~-1>(-1)Blank
+57~31>(31)GV/GVL/GVX
+57~997>(997)Not Reported
+58~-1>(-1)Blank
+58~31>(31)M30
+58~32>(32)Q45
+58~33>(33)G20
+58~34>(34)J30
+58~35>(35)I30
+58~36>(36)I35
+58~37>(37)G25/G35/G37
+58~38>(38)M35/M37/M45/M56
+58~39>(39)FX35/FX37/FX45/FX50
+58~40>(40)EX35
+58~398>(398)Other (automobile)
+58~399>(399)Unknown (automobile)
+58~401>(401)QX4
+58~421>(421)QX56
+58~499>(499)Unknown (Light Truck)
+58~997>(997)Not Reported
+58~999>(999)Unknown (INFINITI)
+59~-1>(-1)Blank
+59~31>(31)ES-250/300/300h/330/ 350
+59~32>(32)LS
+59~33>(33)SC-400/SC-300
+59~34>(34)GS-300/350/400/430/ 450h/460
+59~35>(35)IS-250/300/350/500
+59~36>(36)SC-430
+59~37>(37)HS 250h
+59~398>(398)Other (automobile)
+59~399>(399)Unknown (automobile)
+59~401>(401)RX300/350
+59~402>(402)GX470
+59~403>(403)RX330/350/400h
+59~404>(404)GX460
+59~421>(421)LX450/470/570
+59~499>(499)Unknown (light truck)
+59~997>(997)Not Reported
+59~999>(999)Unknown (LEXUS)
+60~-1>(-1)Blank
+60~31>(31)Charade
+60~401>(401)Rocky
+60~997>(997)Not Reported
+60~999>(999)Unknown (DAIHATSU)
+61~-1>(-1)Blank
+61~31>(31)827
+61~398>(398)Other (automobile)
+61~399>(399)Unknown (automobile)
+61~997>(997)Not Reported
+62~-1>(-1)Blank
+62~401>(401)Discovery
+62~402>(402)Defender
+62~403>(403)Freelander (2004 on; see 422 for 2002-03.)
+62~404>(404)Range Rover Evoque
+62~421>(421)Range Rover
+62~422>(422)Freelander (2002-03 only; see 403 for 2004 on)
+62~423>(423)LR3
+62~424>(424)LR2
+62~498>(498)Other (light truck)
+62~499>(499)Unknown (light truck)
+62~997>(997)Not Reported
+63~-1>(-1)Blank
+63~31>(31)Sephia
+63~32>(32)Rio/Rio5
+63~33>(33)Spectra/Spectra5
+63~34>(34)Optima
+63~35>(35)Amanti
+63~36>(36)Rondo
+63~37>(37)Soul
+63~38>(38)Forte
+63~39>(39)Cadenza
+63~398>(398)Other (automobile)
+63~399>(399)Unknown (automobile)
+63~401>(401)Sportage
+63~402>(402)Sorrento
+63~421>(421)Borrego
+63~441>(441)Sedona
+63~499>(499)Unknown (light truck)
+63~997>(997)Not Reported
+63~999>(999)Unknown (KIA)
+64~-1>(-1)Blank
+64~31>(31)Lanos
+64~32>(32)Nubira
+64~33>(33)Leganza
+64~398>(398)Other (automobile)
+64~399>(399)Unknown (automobile)
+64~997>(997)Not Reported
+65~31>(31)Fortwo
+65~398>(398)Other (automobile)
+65~399>(399)Unknown (automobile)
+65~997>(997)Not Reported
+69~-1>(-1)Blank
+69~31>(31)Aston Martin
+69~32>(32)Bricklin
+69~33>(33)Citroen
+69~34>(34)DeLorean
+69~35>(35)Ferrari
+69~36>(36)Hillman
+69~37>(37)Jensen
+69~38>(38)Lamborghini
+69~39>(39)Lotus
+69~40>(40)Maserati
+69~41>(41)Morris
+69~42>(42)Rolls Royce/Bentley
+69~44>(44)Simca
+69~45>(45)Sunbeam
+69~46>(46)TVR
+69~48>(48)Desta
+69~49>(49)Reliant
+69~52>(52)Bertone
+69~53>(53)Lada
+69~54>(54)Mini-Cooper
+69~55>(55)Morgan (2003 on; Prior to 2003 see 398)
+69~56>(56)Maybach
+69~57>(57)Spyker
+69~58>(58)Koenigsegg
+69~59>(59)Tesla
+69~61>(61)Mahindra
+69~62>(62)Caterhan
+69~63>(63)McLaren
+69~64>(64)Bugatti
+69~398>(398)Other (automotive)
+69~399>(399)Unknown Make
+69~997>(997)Not Reported
+70~-1>(-1)Blank
+70~701>(701)0-50cc
+70~702>(702)51-124cc
+70~703>(703)125-349cc
+70~704>(704)350-449cc
+70~705>(705)450-749cc
+70~706>(706)750cc or greater
+70~709>(709)Unknown cc
+70~997>(997)Not Reported
+71~-1>(-1)Blank
+71~701>(701)0-50cc
+71~702>(702)51-124cc
+71~703>(703)125-349cc
+71~704>(704)350-449cc
+71~705>(705)450-749cc
+71~706>(706)750cc or greater
+71~709>(709)Unknown cc
+71~997>(997)Not Reported
+72~-1>(-1)Blank
+72~701>(701)0-50cc
+72~702>(702)51-124cc
+72~703>(703)125-349cc
+72~704>(704)350-449cc
+72~705>(705)450-749cc
+72~706>(706)750cc or greater
+72~709>(709)Unknown cc
+72~997>(997)Not Reported
+73~-1>(-1)Blank
+73~701>(701)0-50cc
+73~702>(702)51-124cc
+73~703>(703)125-349cc
+73~704>(704)350-449cc
+73~705>(705)450-749cc
+73~706>(706)750cc or greater
+73~709>(709)Unknown cc
+73~731>(731)0-50cc
+73~732>(732)51-124cc
+73~733>(733)125-349cc
+73~734>(734)350cc or greater
+73~739>(739)Unknown cc
+73~997>(997)Not Reported
+73~998>(998)Other (Vehicle)
+74~-1>(-1)Blank
+74~704>(704)350-449cc
+74~705>(705)450-749cc
+74~706>(706)750cc or greater
+74~709>(709)Unknown cc
+74~997>(997)Not Reported
+75~-1>(-1)Blank
+75~704>(704)350-449cc
+75~705>(705)450-749cc
+75~706>(706)750cc or greater
+75~709>(709)Unknown cc
+75~997>(997)Not Reported
+76~-1>(-1)Blank
+76~701>(701)0-50cc
+76~702>(702)51-124cc
+76~703>(703)125-349cc
+76~704>(704)350-449cc
+76~705>(705)450-749cc
+76~706>(706)750cc or greater
+76~709>(709)Unknown cc
+76~731>(731)0-50cc
+76~732>(732)51-124cc
+76~733>(733)125-349cc
+76~734>(734)350cc or greater
+76~739>(739)Unknown cc
+76~997>(997)Not Reported
+76~998>(998)Other (Vehicle)
+77~706>(706)750cc or greater
+77~709>(709)Unknown cc
+77~997>(997)Not Reported
+77~998>(998)Other (Vehicle)
+78~997>(997)Not Reported
+79~997>(997)Not Reported
+80~-1>(-1)Blank
+80~850>(850)Motor Home
+80~881>(881)Medium/Heavy – CBE
+80~882>(882)Medium/Heavy - COE low entry
+80~883>(883)Medium/Heavy - COE high entry
+80~884>(884)Medium/Heavy – Unknown engine location
+80~890>(890)Medium/Heavy – COE entry position unknown
+80~898>(898)Other (medium/heavy truck)
+80~899>(899)Unknown (medium/heavy truck)
+80~981>(981)Bus**: Conventional (Engine out front)
+80~982>(982)Bus: Front engine Flat front
+80~983>(983)Bus: Rear engine Flat front
+80~988>(988)Other (bus)
+80~997>(997)Not Reported
+80~998>(998)Other (vehicle)
+80~999>(999)Unknown (BROCKWAY)
+81~-1>(-1)Blank
+81~850>(850)Motor Home
+81~881>(881)Medium/Heavy - CBE
+81~882>(882)Medium/Heavy – COE low entry
+81~883>(883)Medium/Heavy – COE high entry
+81~884>(884)Medium/Heavy – Unknown engine location
+81~890>(890)Medium/Heavy – COE entry position unknown
+81~898>(898)Other (medium/heavy truck)
+81~899>(899)Unknown (medium/heavy truck)
+81~981>(981)Bus**: Conventional (Engine out front)
+81~982>(982)Bus: Front engine Flat front
+81~983>(983)Bus: Rear engine Flat front
+81~988>(988)Other (bus)
+81~997>(997)Not Reported
+81~998>(998)Other (vehicle)
+81~999>(999)Unknown (DIAMOND REO or REO)
+82~-1>(-1)Blank
+82~461>(461)Sprinter/Advantage
+82~850>(850)Motor Home
+82~870>(870)Medium Heavy Van-Based Vehicle
+82~881>(881)Medium/Heavy - CBE
+82~882>(882)Medium/Heavy – COE low entry
+82~883>(883)Medium/Heavy – COE high entry
+82~884>(884)Medium/Heavy – Unknown engine location
+82~890>(890)Medium/Heavy – COE entry position unknown
+82~898>(898)Other (medium/heavy truck)
+82~899>(899)Unknown (medium/heavy truck)
+82~981>(981)Bus**: Conventional (Engine out front)
+82~982>(982)Bus: Front engine Flat front
+82~983>(983)Bus: Rear engine Flat front
+82~988>(988)Other (bus)
+82~997>(997)Not Reported
+82~998>(998)Other (vehicle)
+82~999>(999)Unknown (FREIGHTLINER)
+83~-1>(-1)Blank
+83~850>(850)Motor Home
+83~881>(881)Medium/Heavy – CBE
+83~882>(882)Medium/Heavy – COE low entry
+83~883>(883)Medium/Heavy – COE high entry
+83~884>(884)Medium/Heavy – Unknown engine location
+83~890>(890)Medium/Heavy – COE entry position unknown
+83~898>(898)Other (medium/heavy truck)
+83~899>(899)Unknown (medium/heavy truck)
+83~981>(981)Bus**: Conventional (Engine out front)
+83~982>(982)Bus: Front engine Flat front
+83~983>(983)Bus: Rear engine Flat front
+83~988>(988)Other (bus)
+83~997>(997)Not Reported
+83~998>(998)Other (vehicle)
+83~999>(999)Unknown (FWD)
+84~-1>(-1)Blank
+84~421>(421)Scout
+84~431>(431)Travelall
+84~466>(466)Multistop Van
+84~481>(481)Pickup
+84~498>(498)Other light truck
+84~499>(499)Unknown light truck
+84~850>(850)Motorhome
+84~881>(881)Medium/Heavy - CBE
+84~882>(882)Medium/Heavy – COE low entry
+84~883>(883)Medium/Heavy – COE high entry
+84~884>(884)Medium/Heavy – Unknown engine location
+84~890>(890)Medium/Heavy – COE entry position unknown
+84~898>(898)Other (medium/heavy truck)
+84~899>(899)Unknown (medium/heavy truck)
+84~981>(981)Bus**: Conventional (Engine out front)
+84~982>(982)Bus: Front engine Flat front
+84~983>(983)Bus**: Rear engine Flat front
+84~988>(988)Other (bus)
+84~997>(997)Not Reported
+84~998>(998)Other (vehicle)
+84~999>(999)Unknown (INTL. HARVESTER/ NAVISTAR)
+85~-1>(-1)Blank
+85~850>(850)Motor Home
+85~881>(881)Medium/Heavy - CBE
+85~882>(882)Medium/Heavy – COE low entry
+85~883>(883)Medium/Heavy – COE high entry
+85~884>(884)Medium/Heavy – Unknown engine location
+85~890>(890)Medium/Heavy – COE entry position unknown
+85~898>(898)Other (medium/heavy truck)
+85~899>(899)Unknown (medium/heavy truck)
+85~981>(981)Bus**: Conventional (Engine out front)
+85~982>(982)Bus: Front engine Flat front
+85~983>(983)Bus: Rear engine Flat front
+85~988>(988)Other (bus)
+85~997>(997)Not Reported
+85~998>(998)Other (vehicle)
+85~999>(999)Unknown (KENWORTH)
+86~-1>(-1)Blank
+86~850>(850)Motor Home
+86~881>(881)Medium/Heavy - CBE
+86~882>(882)Medium/Heavy – COE low entry
+86~883>(883)Medium/Heavy – COE high entry
+86~884>(884)Medium/Heavy – Unknown engine location
+86~890>(890)Medium/Heavy – COE entry position unknown
+86~898>(898)Other (medium/heavy truck)
+86~899>(899)Unknown (medium/heavy truck)
+86~981>(981)Bus**: Conventional (Engine out front)
+86~982>(982)Bus: Front engine Flat front
+86~983>(983)Bus: Rear engine Flat front
+86~988>(988)Other (bus)
+86~997>(997)Not Reported
+86~998>(998)Other (vehicle)
+86~999>(999)Unknown (MACK)
+87~-1>(-1)Blank
+87~850>(850)Motor Home
+87~881>(881)Medium/Heavy - CBE
+87~882>(882)Medium/Heavy – COE low entry
+87~883>(883)Medium/Heavy – COE high entry
+87~884>(884)Medium/Heavy – Unknown engine location
+87~890>(890)Medium/Heavy – COE entry position unknown
+87~898>(898)Other (medium/heavy truck)
+87~899>(899)Unknown (medium/heavy truck)
+87~981>(981)Bus**: Conventional (Engine out front)
+87~982>(982)Bus: Front engine Flat front
+87~983>(983)Bus: Rear engine Flat front
+87~988>(988)Other (bus)
+87~997>(997)Not Reported
+87~998>(998)Other (vehicle)
+87~999>(999)Unknown (PETERBILT)
+88~-1>(-1)Blank
+88~850>(850)Motor Home
+88~881>(881)Medium/Heavy - CBE
+88~882>(882)Medium/Heavy – COE low entry
+88~883>(883)Medium/Heavy – COE high entry
+88~884>(884)Medium/Heavy – Unknown engine location
+88~890>(890)Medium/Heavy – COE entry position unknown
+88~898>(898)Other (medium/heavy truck)
+88~899>(899)Unknown (medium/heavy truck)
+88~981>(981)Bus**: Conventional (Engine out front)
+88~982>(982)Bus: Front engine Flat front
+88~983>(983)Bus: Rear engineFlat front
+88~988>(988)Other (bus)
+88~997>(997)Not Reported
+88~998>(998)Other (vehicle)
+88~999>(999)Unknown (IVECO/MAGIRUS)
+89~-1>(-1)Blank
+89~850>(850)Motor Home
+89~881>(881)Medium/Heavy - CBE
+89~882>(882)Medium/Heavy – COE low entry
+89~883>(883)Medium/Heavy – COE high entry
+89~884>(884)Medium/Heavy – Unknown engine location
+89~890>(890)Medium/Heavy – COE entry position unknown
+89~898>(898)Other (medium/heavy truck)
+89~899>(899)Unknown (medium/heavy truck)
+89~981>(981)Bus**: Conventional (Engine out front)
+89~982>(982)Bus: Front engine Flat front
+89~983>(983)Bus: Rear engine Flat front
+89~988>(988)Other (bus)
+89~997>(997)Not Reported
+89~998>(998)Other (vehicle)
+89~999>(999)Unknown (WHITE/AUTOCAR-WHITE/GMC)
+90~-1>(-1)Blank
+90~461>(461)Van Based
+90~981>(981)Bus**: Conventional (Engine out front)
+90~982>(982)Bus: Front engine Flat front
+90~983>(983)Bus: Rear engine Flat front
+90~988>(988)Other (bus)
+90~989>(989)Unknown (Bus)
+90~997>(997)Not Reported
+90~999>(999)Unknown (BLUEBIRD)
+91~-1>(-1)Blank
+91~981>(981)Bus**: Conventional (Engine out front)
+91~982>(982)Bus: Front engine Flat front
+91~983>(983)Bus: Rear engine Flat front
+91~988>(988)Other (bus)
+91~989>(989)Unknown (Bus)
+91~997>(997)Not Reported
+92~-1>(-1)Blank
+92~981>(981)Bus**: Conventional (Engine out front)
+92~982>(982)Bus: Front engine Flat front
+92~983>(983)Bus: Rear engine Flat front
+92~988>(988)Other (bus)
+92~989>(989)Unknown (bus)
+92~997>(997)Not Reported
+93~-1>(-1)Blank
+93~981>(981)Bus**: Conventional (Engine out front)
+93~982>(982)Bus: Front engine Flat front
+93~983>(983)Bus: Rear engine Flat front
+93~988>(988)Other (bus)
+93~989>(989)Unknown (bus)
+93~997>(997)Not Reported
+94~-1>(-1)Blank
+94~461>(461)Van Based
+94~981>(981)Bus**: Conventional (Engine out front)
+94~982>(982)Bus: Front engine Flat front
+94~983>(983)Bus: Rear engine Flat front
+94~988>(988)Other (bus)
+94~997>(997)Not Reported
+94~999>(999)Unknown(THOMAS BUILT)
+97~997>(997)Not Reported
+98~-1>(-1)Blank
+98~301>(301)Think
+98~302>(302)Meyers Motor
+98~398>(398)Other (automobile)
+98~498>(498)Other (light truck)
+98~598>(598)Other (LSV/NEV)
+98~701>(701)0-50cc
+98~702>(702)51-124cc
+98~703>(703)125-349cc
+98~704>(704)350-449cc
+98~705>(705)450-749cc
+98~706>(706)750cc or greater
+98~709>(709)Unknown cc
+98~731>(731)0-50cc
+98~732>(732)51-124cc
+98~733>(733)125-349cc
+98~734>(734)350cc or greater
+98~739>(739)Unknown cc
+98~802>(802)Auto-Union-DKW
+98~803>(803)Divco
+98~804>(804)Western Star
+98~805>(805)Oshkosh
+98~806>(806)Hino
+98~807>(807)Scania
+98~808>(808)UD
+98~809>(809)Sterling
+98~850>(850)Motor Home
+98~870>(870)Medium/Heavy Van-Based Vehicle
+98~881>(881)Medium/Heavy – CBE
+98~882>(882)Medium/Heavy – COE low entry
+98~883>(883)Medium/Heavy – COE high entry
+98~884>(884)Medium/Heavy – Unknown engine location
+98~890>(890)Medium/Heavy – COE entry position unknown
+98~898>(898)Other (medium/heavy truck)**
+98~902>(902)Neoplan
+98~903>(903)Carpenter
+98~903>(903)Carpenter
+98~904>(904)Collins Bus
+98~905>(905)DINA
+98~906>(906)Mid Bus
+98~907>(907)Orion
+98~908>(908)Van Hool
+98~981>(981)Bus***: Conventional (Engine out front)
+98~982>(982)Bus: Front engine Flat front
+98~983>(983)Bus: Rear engine Flat front
+98~988>(988)Other (bus)
+98~997>(997)Not Reported
+98~998>(998)Other (vehicle)
+98~999>(999)Unknown (OTHER MAKE)
+99~-1>(-1)Blank
+99~399>(399)Unknown (automobile)
+99~499>(499)Unknown (light truck)
+99~598>(598)Unknown (LSG/NGV)
+99~599>(599)Unknown (LSV/NGV)
+99~701>(701)0-50cc
+99~702>(702)51-124cc
+99~703>(703)125-349cc
+99~704>(704)350-449cc
+99~705>(705)450-749cc
+99~706>(706)750cc or greater
+99~709>(709)Unknown cc
+99~731>(731)0-50cc
+99~732>(732)51-124cc
+99~733>(733)125-349cc
+99~734>(734)350cc or greater
+99~739>(739)Unknown cc
+99~850>(850)Motor Home
+99~870>(870)Medium Heavy Van-Based Vehicle
+99~881>(881)Medium/Heavy – CBE
+99~882>(882)Medium/Heavy - COE low entry
+99~883>(883)Medium/Heavy - COE high entry
+99~884>(884)Medium/Heavy - Unknown engine location
+99~890>(890)Medium/Heavy – COE entry position unknown
+99~898>(898)Other (medium/heavy truck)
+99~899>(899)Unknown (medium/heavy truck)
+99~981>(981)Bus**: Conventional (Engine out front)
+99~982>(982)Bus: Front engine. Flat front
+99~983>(983)Bus: Rear engine Flat front
+99~988>(988)Other (bus)
+99~989>(989)Unknown (bus)
+99~997>(997)Not Reported
+99~998>(998)Other (vehicle)
+99~999>(999)Unknown (as to automobile motored cycle light truck or truck)

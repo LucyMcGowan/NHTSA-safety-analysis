@@ -1,0 +1,1009 @@
+---
+title: "NHTSA Saftey Analysis"
+author: "Lucy D’Agostino McGowan & Ryan Jarrett"
+date: "July 22, 2016"
+output: html_document
+---
+
+```{r setup,warning=F,message=F,include=FALSE}
+require(survey)
+library(Hmisc)
+library(rms)
+library(pcaPP)
+library(MASS)
+library(car)
+library(stargazer)
+library(plyr)
+library(sas7bdat)
+```
+
+# Read in Data
+
+## Vehicle-level Data from NHTSA
+```{r}
+
+dat1<-read.sas7bdat("data/vehicle11.sas7bdat")
+dat2<-read.sas7bdat("data/vehicle12.sas7bdat")
+dat3<-read.sas7bdat("data/vehicle13.sas7bdat")
+dat4<-read.sas7bdat("data/vehicle14.sas7bdat")
+dat3$MAK_MOD<-paste0(dat3$MAKE,dat3$MODEL)
+dat2$MAK_MOD<-paste0(dat2$MAKE,dat2$MODEL)
+dat1$MAK_MOD<-paste0(dat1$MAKE,dat1$MODEL)
+dat1$VEH_SC1<-dat1$VEH_SC2<-dat1$DR_SF1<-dat1$DR_SF2<-dat1$DR_SF3<-dat1$DR_SF4<-NA
+#drop names that don't match
+dat1<-dat1[,-34]
+
+dat1<-dat1[,order(names(dat1))]
+dat2<-dat2[,order(names(dat2))]
+dat3<-dat3[,order(names(dat3))]
+dat4<-dat4[,order(names(dat4))]
+dat2<-dat2[,-18]
+dat3<-dat3[,-18]
+dat4<-dat4[,-18]
+dat1<-dat1[,-27]
+#Save(dat1);Save(dat2);Save(dat3);Save(dat4)
+#just 2012-2014
+dat<-rbind(dat1,dat2,dat3,dat4)
+```
+
+## Person-level Data from NHTSA
+```{r}
+#pull in person data
+datp1<-read.sas7bdat("data/person11.sas7bdat")
+datp2<-read.sas7bdat("data/person12.sas7bdat")
+datp3<-read.sas7bdat("data/person13.sas7bdat")
+datp4<-read.sas7bdat("data/person14.sas7bdat")
+#Save(datp1);Save(datp2);Save(datp3);Save(datp4)
+#2011
+datp1$driver<-ifelse(datp1$SEAT_IM==11,1,0)
+datp1$id<-paste0(datp1$CASENUM,datp1$VEH_NO)
+datp1<-datp1[order(datp1$id,-datp1$INJSEV_IM,-datp1$driver),c("CASENUM","VEH_NO","PER_NO","AGE_IM","SEX_IM","INJSEV_IM","EJECT_IM","PERALCH_IM","SEAT_IM","REST_MIS","AIR_BAG","driver","id")]
+datp1<-datp1[!(duplicated(datp1$id)),]
+#d1<-merge(datp1,dat1,by=c("CASENUM","VEH_NO"))
+#2012
+datp2$driver<-ifelse(datp2$SEAT_IM==11,1,0)
+datp2$id<-paste0(datp2$CASENUM,datp2$VEH_NO)
+datp2<-datp2[order(datp2$id,-datp2$INJSEV_IM,-datp2$driver),c("CASENUM","VEH_NO","PER_NO","AGE_IM","SEX_IM","INJSEV_IM","EJECT_IM","PERALCH_IM","SEAT_IM","REST_MIS","AIR_BAG","driver","id")]
+datp2<-datp2[!(duplicated(datp2$id)),]
+#d2<-merge(datp2,dat2,by=c("CASENUM","VEH_NO"))
+#2013
+datp3$driver<-ifelse(datp3$SEAT_IM==11,1,0)
+datp3$id<-paste0(datp3$CASENUM,datp3$VEH_NO)
+datp3<-datp3[order(datp3$id,-datp3$INJSEV_IM,-datp3$driver),c("CASENUM","VEH_NO","PER_NO","AGE_IM","SEX_IM","INJSEV_IM","EJECT_IM","PERALCH_IM","SEAT_IM","REST_MIS","AIR_BAG","driver","id")]
+datp3<-datp3[!(duplicated(datp3$id)),]
+#d3<-merge(datp3,dat3,by=c("CASENUM","VEH_NO"))
+#2014
+datp4$driver<-ifelse(datp4$SEAT_IM==11,1,0)
+datp4$id<-paste0(datp4$CASENUM,datp4$VEH_NO)
+datp4<-datp4[order(datp4$id,-datp4$INJSEV_IM,-datp4$driver),c("CASENUM","VEH_NO","PER_NO","AGE_IM","SEX_IM","INJSEV_IM","EJECT_IM","PERALCH_IM","SEAT_IM","REST_MIS","AIR_BAG","driver","id")]
+datp4<-datp4[!(duplicated(datp4$id)),]
+#d4<-merge(datp4,dat4,by=c("CASENUM","VEH_NO"))
+#dat<-rbind(d1,d2,d3,d4)
+datp<-rbind(datp1,datp2,datp3,datp4)
+#Save(datp)
+#Save(dat)
+```
+
+##Accident-level data from NHTSA
+```{r,eval=F}
+data1<-read.sas7bdat("data/accident11.sas7bdat")
+data2<-read.sas7bdat("data/accident12.sas7bdat")
+data3<-read.sas7bdat("data/accident13.sas7bdat")
+data4<-read.sas7bdat("data/accident14.sas7bdat")
+#Save(data1);Save(data2);Save(data3);Save(data4)
+data1<-data1[,c("CASENUM","WEATHR_IM","INT_HWY","MANCOL_IM")]
+data2<-data2[,c("CASENUM","WEATHR_IM","INT_HWY","MANCOL_IM")]
+data3<-data3[,c("CASENUM","WEATHR_IM","INT_HWY","MANCOL_IM")]
+data4<-data4[,c("CASENUM","WEATHR_IM","INT_HWY","MANCOL_IM")]
+
+# Combine all data
+data<-rbind(data1,data2,data3,data4)
+#Save(data)
+```
+
+# Data Cleaning
+## Update Make/Model with actual Make and Model
+
+```{r}
+
+MM <- unique(dat[dat$MOD_YEAR>=2011,c("MAKE", "MODEL", "MOD_YEAR")])
+MM$mm.id <- paste(MM$MAKE, MM$MODEL, sep = "~")
+# data from http://www-fars.nhtsa.dot.gov/QueryTool/QuerySection/SelectCriteria.aspx
+mmKey <- read.csv("data/make_model_key.csv")
+names(mmKey) <- "string"
+mmKey <- data.frame(do.call('rbind', strsplit(as.character(mmKey$string),'>',fixed=TRUE)))
+mmKey$X2 <- gsub("\\s*\\([^\\)]+\\)","", mmKey$X2)
+names(mmKey) <- c("mm.id", "model.name")
+
+MM <- merge(MM, mmKey, by = "mm.id")
+
+MM$make.name <- recode(MM$MAKE, "1  = 'American Motors'; 2  = 'Jeep'; 3  = 'AM General'; 6  = 'Chrysler'; 7  = 'Dodge';
+                       8  = 'Imperial'; 9  = 'Plymouth'; 10 = 'Eagle'; 12 = 'Ford'; 13 = 'Lincoln'; 14 = 'Mercury';
+                       18 = 'Buick'; 19 = 'Cadillac'; 20 = 'Chevrolet'; 21 = 'Oldsmobile'; 22 = 'Pontiac';
+                       23 = 'GMC'; 24 = 'Saturn'; 25 = 'Grumman'; 29 = 'NA'; 30 = 'Volkswagen'; 31 = 'Alfa Romeo';
+                       32 = 'Audi'; 33 = 'Austin'; 34 = 'BMW'; 35 = 'Nissan'; 36 = 'Fiat'; 37 = 'Honda'; 38 = 'Isuzu';
+                       39 = 'Jaguar'; 40 = 'Lancia'; 41 = 'Mazda'; 42 = 'Mercedes Benz'; 43 = 'MG'; 44 = 'Peugeot';
+                       45 = 'Porsche'; 46 = 'Renault'; 47 = 'Saab'; 48 = 'Subaru'; 49 = 'Toyota'; 50 = 'Triumph';
+                       51 = 'Volvo'; 52 = 'Mitsubishi'; 53 = 'Suzuki'; 54 = 'Acura'; 55 = 'Hyundai'; 56 = 'Merkur';
+                       57 = 'Yugo'; 58 = 'Infiniti'; 59 = 'Lexus'; 60 = 'Diahatsu'; 61 = 'Sterling'; 62 = 'Land Rover';
+                       63 = 'Kia'; 64 = 'Daewoo'; 65 = 'Mini'; 65 = 'Smart'; 66 = 'Mahindra'; 67 = 'Scion'; 69 = 'NA';
+                       70 = 'BSA'; 71 = 'Ducati'; 72 = 'Harley-Davidson'; 73 = 'Kawasaki'; 74 = 'Moto-Guzzi';
+                       75 = 'Norton'; 76 = 'Yamaha'; 78 = 'NA'; 79 = 'NA'; 80 = 'Brockway'; 81 = 'Diamond Rio/Rio';
+                       82 = 'Freightliner'; 83 = 'FWD'; 84 = 'International Harvester/Navistar'; 85 = 'Kenworth';
+                       86 = 'Mack'; 87 = 'Peterbilt'; 88 = 'Iveco/Magirus'; 89 = 'GMC'; 90 = 'Bluebird';
+                       91 = 'Eagle Coach'; 92 = 'Gillig'; 93 = 'MCI'; 94 = 'Thomas Built'; 97 = 'Not Reported';
+                       98 = 'NA'; 99 = 'NA'")
+
+# remove unknown years
+MM <- MM[MM$MOD_YEAR %nin% c(9999, 9998),]
+
+# remove everything after forward slash in model name
+# I think this is wrong MM$model.name <- gsub("/", "", MM$model.name)
+MM$model.name <-gsub("\\/.*", "", MM$model.name)
+MM$model.name <-gsub(" ","+",MM$model.name)
+
+#remove unknown models
+MM<-MM[MM$model.name!="Unknown" & MM$make.name!="NA",]
+require(rjson)
+
+isEmpty <- function(x) {
+  return(length(x)==0)
+}
+```
+
+# Scrape Rating Data
+```{r}
+getRating <- function(make, model, year, post2010 = T){
+  
+  url <- ifelse(post2010,
+                paste("http://www.safercar.gov/Vehicle%2BShoppers/5-Star%2BSafety%2BRatings/2011-Newer%2BVehicles/Search-Results?searchtype=model&make=",
+                      make, "&model=", model, "&year=", year, sep = ""),
+                paste("http://www.safercar.gov/Vehicle%2BShoppers/5-Star%2BSafety%2BRatings/1990-2010%2BVehicles/Search-Results?searchtype=model&make=",
+                      make, "&model=", model, "&year=", year, sep = ""))
+  
+  htmlTree <- readLines(url, warn="F")
+  
+  # get vehicle ID -- for pulling vehicle weight later
+  vehicleID.text <- htmlTree[grep("vehicleId=", htmlTree)][1]
+  str <- sub(".*?id=(.*?)>.*", "\\1", vehicleID.text)
+  vehicle.no <- gsub("[^0-9]", "", str)
+  
+  # get vehicle weight -- redirects to new page
+  url2 <- ifelse(post2010,
+                 paste("http://www.safercar.gov/Vehicle+Shoppers/5-Star+Safety+Ratings/2011-Newer+Vehicles/Vehicle-Detail?vehicleId=",
+                       vehicle.no, sep = ""),
+                 paste("http://www.safercar.gov/Vehicle%2BShoppers/5-Star%2BSafety%2BRatings/1990-2010%2BVehicles/Vehicle-Detail?vehicleId=",
+                       vehicle.no, sep = ""))
+  htmlTree2 <- readLines(url2, warn="F") 
+  weight.text <- htmlTree2[grep("Vehicle Test Weight", htmlTree2)]
+  vehicle.weight <-sub(".*?Weight: (.*?) lbs.*", "\\1", weight.text)
+  vehicle.weight <- as.integer(vehicle.weight)
+  
+  # get safety ratings
+  star.text <- htmlTree[grep("class=\"stars b_right\"><img src=\"/staticfiles/scassets/images/", htmlTree)]
+  
+  if(length(star.text)%%4 == 0 & post2010) {
+    red.star.text <- star.text[1:4]
+    red.star.text2 <- star.text[5:8]
+    overall.rating <- unique(as.numeric(unlist(strsplit(gsub("[^0-9]", "", unlist(red.star.text[1])), ""))))
+    front.rating <- unique(as.numeric(unlist(strsplit(gsub("[^0-9]", "", unlist(red.star.text[2])), ""))))
+    side.rating <- unique(as.numeric(unlist(strsplit(gsub("[^0-9]", "", unlist(red.star.text[3])), ""))))
+    rollover.rating <- unique(as.numeric(unlist(strsplit(gsub("[^0-9]", "", unlist(red.star.text[4])), ""))))
+  }
+  
+  vehicle.no <- ifelse(isEmpty(vehicle.no),NA,vehicle.no)
+  vehicle.weight <- ifelse(isEmpty(vehicle.weight),NA,vehicle.weight)
+   overall.rating <- ifelse(isEmpty(overall.rating),NA,overall.rating)
+   front.rating <- ifelse(isEmpty(front.rating),NA,front.rating)
+   side.rating <- ifelse(isEmpty(side.rating),NA,side.rating)
+   rollover.rating <- ifelse(isEmpty(front.rating),NA,rollover.rating)
+  out <- c(vehicle.no, vehicle.weight, overall.rating, front.rating, side.rating, rollover.rating)
+  names(out) <- c("vehicle number", "vehicle weight (lbs)", "overall", "front crash", "side crash", "rollover")
+  out
+}
+
+
+ ratings <- as.data.frame(matrix(NA, nrow(MM), 6))
+ names(ratings) <- c("vehicle.no", "vehicle.weight", "overall", "front", "side", "rollover.rating")
+ 
+ for(i in 1:nrow(MM)){
+   print(i)
+   ratings[i,] <- try(getRating(make = toupper(MM$make.name[i]),
+                            model = toupper(MM$model.name[i]),
+                            year = as.character(MM$MOD_YEAR[i]), 
+                            post2010 = T))
+  }
+Save(ratings)
+MM2 <- cbind(MM, ratings)
+ 
+
+dat$MOD_YEAR <- as.character(dat$MOD_YEAR)
+data.all <- merge(dat,MM2, by = c("MAKE", "MODEL", "MOD_YEAR"),all.x=T)
+
+#Save(data.all)
+
+```
+
+# Data Cleaning
+## Merge data
+```{r}
+data.all<-merge(data.all,datp,by=c("CASENUM","VEH_NO"),all.x=T)
+data.all<-merge(data.all,data,by=c("CASENUM"),all.x=T)
+#check
+#sum(data.all$MAX_VSEV_IM!=data.all$INJSEV_IM)
+
+
+# correct "0" weight of test vehicle for 2015 Nissan Altima
+# http://www.edmunds.com/nissan/altima/2015/features-specs/
+data.all$vehicle.weight[data.all$vehicle.weight == 0] <- 4211 
+
+
+#USING Imputed variable
+#Put died prior in died category (6 in 4)
+#Put injured unkwnon in 1 (5 in 1)
+#Put no passangers no injury (8 in 0)
+data.all$MAX_VSEV_NEW<-ifelse(data.all$MXVSEV_IM == 6, 4,data.all$MXVSEV_IM)
+data.all$MAX_VSEV_NEW<-ifelse(data.all$MXVSEV_IM == 5, 1,data.all$MAX_VSEV_NEW)
+data.all$MAX_VSEV_NEW<-ifelse(data.all$MXVSEV_IM == 8, 0,data.all$MAX_VSEV_NEW)
+
+#rating - if no rating, 9
+data.all$rating<-ifelse(!is.na(data.all$overall),data.all$overall,9)
+data.all$MAX_VSEV_NEW_f<-as.ordered(data.all$MAX_VSEV_NEW)
+
+#combine 3 and 4
+data.all$rating_comb<-ifelse(data.all$rating %in% c(2,3),3,data.all$rating)
+
+data.all$rating2 <- 1*(data.all$rating == 2)
+data.all$rating3 <- 1*(data.all$rating == 3)
+data.all$rating23 <- 1*(data.all$rating %in% c(2,3))
+data.all$rating4 <- 1*(data.all$rating == 4)
+data.all$rating5 <- 1*(data.all$rating == 5)
+data.all$ratingmissing<- 1*(data.all$rating==9)
+
+data.all$injured<-ifelse(data.all$MAX_VSEV_NEW_f!=0,1,0)
+data.all$speed <- ifelse(data.all$SPEEDREL %in% c(1,2,3,4,5),1,data.all$SPEEDREL)
+```
+
+## Create Weight Categories
+```{r}
+#weight categories
+# Passenger cars mini (PC/Mi) (1,500–1,999 lbs.) (dont have any of these)
+# Passenger cars light (PC/L) (2,000–2,499 lbs.) (have 3 of tehse)
+# Passenger cars compact (PC/C) (2,500–2,999 lbs.)
+# Passenger cars medium (PC/Me) (3,000–3,499 lbs.)
+# Passenger cars heavy (PC/H) (3,500 lbs. and over )
+
+data.all$vehicle.weight1<-ifelse(data.all$vehicle.weight>2000 & data.all$vehicle.weight<2500 & !is.na(data.all$vehicle.weight),1,0 )
+data.all$vehicle.weight2<-ifelse(data.all$vehicle.weight>2500 & data.all$vehicle.weight<3000 & !is.na(data.all$vehicle.weight),1,0 )
+data.all$vehicle.weight12<-ifelse(data.all$vehicle.weight<3000 & !is.na(data.all$vehicle.weight),1,0)
+data.all$vehicle.weight3<-ifelse(data.all$vehicle.weight>=3000 & data.all$vehicle.weight<3500 & !is.na(data.all$vehicle.weight),1,0 )
+data.all$vehicle.weight4<-ifelse(data.all$vehicle.weight>=3500 & !is.na(data.all$vehicle.weight),1,0 )
+data.all$vehicle.weightc<-ifelse(data.all$vehicle.weight1==1,1,NA)
+data.all$vehicle.weightc<-ifelse(data.all$vehicle.weight2==1,1,data.all$vehicle.weightc)
+data.all$vehicle.weightc<-ifelse(data.all$vehicle.weight3==1,2,data.all$vehicle.weightc)
+data.all$vehicle.weightc<-ifelse(data.all$vehicle.weight4==1,3,data.all$vehicle.weightc)
+
+#airbag
+data.all$AIRBAG<-ifelse(data.all$AIR_BAG %in% c(1,2,3,7,8,9),1,0)
+data.all$AIRBAG<-ifelse(data.all$AIR_BAG %in% c(0,99,98),9,data.all$AIRBAG)
+
+```
+
+## Recategorize Impact Location
+```{r}
+# recategorize IMPACT1_IM
+data.all$IMPACT_LOC[data.all$IMPACT1_IM %in% c(10,11,12,1,2,62,82)] <- "front"
+data.all$IMPACT_LOC[data.all$IMPACT1_IM %in% c(4,5,6,7,8,63,83)] <- "back"
+data.all$IMPACT_LOC[data.all$IMPACT1_IM %in% c(2,3,4,8,9,10,61,81)] <- "side"
+data.all$IMPACT_LOC[data.all$IMPACT1_IM %in% c(0,13,14,18,19)] <- "other"
+data.all$IMPACT_LOC <- as.factor(data.all$IMPACT_LOC)
+
+# recategorize MAN_COLL - nah, it's ok.
+data.all$MAN_COLL[data.all$MAN_COLL == 98] <- 99 # replace "not reported" with "unknown" -- There exists an imputed version of this variable: MANCOL_IM in the ACCIDENT data file. 
+
+data.all$MANCOL_IM<-as.factor(data.all$MANCOL_IM)
+
+#create outcome for severe
+data.all$SEVERE<-ifelse(data.all$MXVSEV_IM %in% c(3,4),1,0)
+
+# subset.data<-data.all[data.all$MOD_YEAR>2010 & data.all$rating!=9 & !(data.all$MXVSEV_IM %in% c(5,6,8)) & I(data.all$MANCOL_IM!=10),]
+subset.data<-data.all[data.all$MOD_YEAR>2010 & data.all$rating!=9 & !(data.all$MXVSEV_IM %in% c(5,6,8)) ,]
+```
+
+## Create Survey Design Object
+```{r}
+#create design
+des<-svydesign(id=~PSU, strata=~STRATUM, weights=~WEIGHT,data=data.all, nest=TRUE)
+```
+
+## Subset >2010
+```{r}
+#subset<-subset(des,MOD_YEAR>2010 & rating!=9 & !(MXVSEV_IM %in% c(5,6,8)) & I(MANCOL_IM!=10))
+subset<-subset(des,MOD_YEAR>2010 & rating!=9 & !(MXVSEV_IM %in% c(5,6,8)) )
+```
+
+# Analysis
+
+## Create Tables
+```{r}
+#unweighted n
+table(data.all$rating[data.all$MOD_YEAR>2010])
+#p
+prop.table(table(data.all$rating[data.all$MOD_YEAR>2010]))
+
+#weighted n
+svytable(~rating,subset(des,MOD_YEAR>2010))
+#p
+prop.table(svytable(~rating,subset(des,MOD_YEAR>2010))) ## Weighting doesn't substantially change the distribution of ratings -- 
+
+# distribution of ratings in unweighted and unweighted samples 
+barplot(prop.table(table(data.all$rating[data.all$MOD_YEAR>2010])), xlab = "rating", main = "unweighted sample")
+barplot(prop.table(svytable(~rating,subset(des,MOD_YEAR>2010))), xlab = "rating", main = "weighted sample")
+
+
+subset<-subset(des,MOD_YEAR>2010 & rating!=9 & !(MXVSEV_IM %in% c(5,6,8)))
+#injury severity
+svytable(~MXVSEV_IM,subset)
+prop.table(svytable(~MXVSEV_IM,subset))
+
+
+#rating
+svytable(~rating,subset)
+prop.table(svytable(~rating,subset))
+
+prop<-prop.table(svytable(~MXVSEV_IM+rating_comb,subset),2)
+colnames(prop)<-c("2- or 3-Stars","4-Stars","5-Stars")
+
+
+###barplots by weight
+prop1<-prop.table(svytable(~MXVSEV_IM+rating_comb,subset(subset, vehicle.weightc==1)),2)
+colnames(prop1)<-c("2- or 3-Stars","4-Stars","5-Stars")
+
+prop2<-prop.table(svytable(~MXVSEV_IM+rating_comb,subset(subset, vehicle.weightc==2)),2)
+colnames(prop2)<-c("2- or 3-Stars","4-Stars","5-Stars")
+
+prop3<-prop.table(svytable(~MXVSEV_IM+rating_comb,subset(subset, vehicle.weightc==3)),2)
+colnames(prop3)<-c("2- or 3-Stars","4-Stars","5-Stars")
+
+```
+
+```{r}
+t<-prop.table(svytable(~model.name+injured,subset(subset,vehicle.weight3==1)),1)
+
+t<-prop.table(svytable(~model.name+injured,des),1)
+t[order(t[,1]),]
+t2<-svytable(~model.name+injured,subset(subset,vehicle.weight3==1))
+t2[order(t[,1]),]
+unique(subset.data[subset.data$model.name %in% c("Outlander","Caliber","Leaf","Lancer","Sportage"),c("model.name","make.name","rating")])
+
+unique(subset.data[subset.data$model.name %in% rownames(t[order(t[,1]),])[1:10]
+,c("model.name","make.name","rating")])
+
+
+unique(subset.data[subset.data$model.name %in% rownames(t[order(t[,1]),])[20:29]
+,c("model.name","make.name","rating")])
+
+
+unique(subset.data[subset.data$model.name %in% c("Mariner","A3","Transit+Connect","200","Tucson"),c("model.name","make.name","rating")])
+```
+
+## Plots
+```{r}
+barplot(prop, main="Maximum Injury by Saftey Rating (Weighted)",xlab="NHTSA Saftey Rating",col=c("#4BACC6","#54CE80","#1F497D","#F79646","#C11242"))
+#legend= c("No injury","Possible injury","Non-incapacitating","Incapacitating","Fatal"), args.legend = list(x="topright"))
+
+barplot(prop[4:5,], main="Maximum Injury by Saftey Rating (Weighted)",xlab="NHTSA Saftey Rating",col=c("#F79646","#C11242"))
+
+barplot(prop1, main="Maximum Injury by Saftey Rating (Weighted) (Weight <3000lb)",xlab="NHTSA Saftey Rating",col=c("#4BACC6","#54CE80","#1F497D","#F79646","#C11242"))
+#legend= c("No injury","Possible injury","Non-incapacitating","Incapacitating","Fatal"), args.legend = list(x="topright"))
+
+barplot(prop2, main="Maximum Injury by Saftey Rating (Weighted) (Weight 3000lb-3499lb)",xlab="NHTSA Saftey Rating",col=c("#4BACC6","#54CE80","#1F497D","#F79646","#C11242"))
+#legend= c("No injury","Possible injury","Non-incapacitating","Incapacitating","Fatal"), args.legend = list(x="topright"))
+
+barplot(prop3, main="Maximum Injury by Saftey Rating (Weighted) (Weight >3500lb)",xlab="NHTSA Saftey Rating",col=c("#4BACC6","#54CE80","#1F497D","#F79646","#C11242"))
+#legend= c("No injury","Possible injury","Non-incapacitating","Incapacitating","Fatal"), args.legend = list(x="topright"))
+
+barplot(prop1[4:5,], main="Maximum Injury by Saftey Rating (Weighted) (Weight <3000lb)",xlab="NHTSA Saftey Rating",col=c("#F79646","#C11242"))
+
+
+barplot(prop2[4:5,], main="Maximum Injury by Saftey Rating (Weighted) (Weight 3000lb-3499lb)",xlab="NHTSA Saftey Rating",col=c("#F79646","#C11242"))
+
+
+barplot(prop3[4:5,], main="Maximum Injury by Saftey Rating (Weighted) (Weight >3500lb)",xlab="NHTSA Saftey Rating",col=c("#F79646","#C11242"))
+
+
+
+prop2<-prop.table(table(data.all$MAX_VSEV_NEW[data.all$MOD_YEAR>2010 & data.all$rating!=9 & !(data.all$MXVSEV_IM %in% c(5,6,8))],data.all$rating_comb[data.all$MOD_YEAR>2010 & data.all$rating!=9 & !(data.all$MXVSEV_IM %in% c(5,6,8))]),2)
+colnames(prop2)<-c("2- or 3-Stars","4-Stars","5-Stars")
+
+barplot(prop2, main="Maximum Injury by Saftey Rating (Not Weighted)",xlab="NHTSA Saftey Rating",col=c("#4BACC6","#54CE80","#1F497D","#F79646","#C11242"))
+
+```
+
+## Models
+
+###Unadjusted Model
+```{r}
+s<-svyolr(as.factor(MXVSEV_IM)~  rating2+rating3 + rating5 ,subset)
+summary(s)
+lrm(MXVSEV_IM~  rating2+rating3 + rating5 ,data=data.all[data.all$MOD_YEAR>2010 & data.all$rating!=9 & !(data.all$MXVSEV_IM %in% c(5,6,8)),])
+# coef(s)
+# #check with lrm
+# lrm(MAX_VSEV_NEW_f~ ratingmissing+ rating3 + rating4 + rating5 ,data.all,weight=WEIGHT)
+
+```
+
+```{r, eval=F}
+# additional plots
+library(vcd)
+
+# descriptive variables of interest: rating, weight, MAN_COLL, IMPACT_LOC, WEATHER_IM
+t1 <- table(data.all$MXVSEV_IM, data.all$rating)
+t2 <- table(data.all$MXVSEV_IM, data.all$IMPACT_LOC)
+t3 <- table(data.all$MXVSEV_IM, data.all$MAN_COLL)
+t4 <- table(data.all$MXVSEV_IM, data.all$WEATHER_IM)
+
+# mosaic(t1, shade=TRUE, legend=TRUE)
+# mosaic(t2, shade=TRUE, legend=TRUE)
+# mosaic(t3, shade=TRUE, legend=TRUE)
+```
+
+
+###Adjusted Model
+```{r}
+s<-svyglm(injured~rating5*vehicle.weight4+
+            rating5*vehicle.weight12+
+            rating4*vehicle.weight4+
+            rating4*vehicle.weight12+
+            as.factor(MANCOL_IM)+ 
+            as.factor(INT_HWY)+
+            as.factor(IMPACT_LOC)+ 
+            rcs(AGE_IM)*SEX_IM+ 
+            REST_MIS+
+            as.factor(ROLLOVER)+
+            V_ALCH_IM+
+            as.factor(speed)+
+            as.factor(WEATHR_IM)+
+            as.factor(AIRBAG),
+          subset, family=quasibinomial())
+
+confint(s)
+
+
+
+```
+
+```{r}
+# plot of beta effects
+estTab <- data.frame(WeightClass = rep(c("1/2","3","4"), each = 2),
+                     Rating = rep(c("5","4"), times = 3), 
+                     pointEst = NA,
+                     LB95 = NA,
+                     UB95 = NA)
+
+# fit model with weight class 1/2 as the base cagegory
+s.weight12<-svyglm(injured~rating5*vehicle.weight4+
+            rating5*vehicle.weight3+
+            rating4*vehicle.weight4+
+            rating4*vehicle.weight3+
+            as.factor(MANCOL_IM)+ 
+            as.factor(INT_HWY)+
+            as.factor(IMPACT_LOC)+ 
+            rcs(AGE_IM)*SEX_IM+ 
+            REST_MIS+
+            as.factor(ROLLOVER)+
+            V_ALCH_IM+
+            as.factor(speed)+
+            as.factor(WEATHR_IM)+
+            as.factor(AIRBAG),
+          subset,family=quasibinomial())
+estTab[1:2,3] <- coef(s.weight12)[c(2,5)]
+ci.12 <- confint(s.weight12)
+estTab[1:2,4:5] <- ci.12[c(2,5),1:2]
+
+# fit model with weight class 3 as the base cagegory
+s.weight3<-svyglm(injured~rating5*vehicle.weight4+
+            rating5*vehicle.weight12+
+            rating4*vehicle.weight4+
+            rating4*vehicle.weight12+
+            as.factor(MANCOL_IM)+ 
+            as.factor(INT_HWY)+
+            as.factor(IMPACT_LOC)+ 
+            rcs(AGE_IM)*SEX_IM+ 
+            REST_MIS+
+            as.factor(ROLLOVER)+
+            V_ALCH_IM+
+            as.factor(speed)+
+            as.factor(WEATHR_IM)+
+            as.factor(AIRBAG),
+          subset,family=quasibinomial())
+estTab[3:4,3] <- coef(s.weight3)[c(2,5)]
+ci.3 <- confint(s.weight3)
+estTab[3:4,4:5] <- ci.3[c(2,5),1:2]
+
+
+# fit model with weight class 4 as the base cagegory
+s.weight4<-svyglm(injured~rating5*vehicle.weight12+
+            rating5*vehicle.weight3+
+            rating4*vehicle.weight12+
+            rating4*vehicle.weight3+
+            as.factor(MANCOL_IM)+ 
+            as.factor(INT_HWY)+
+            as.factor(IMPACT_LOC)+ 
+            rcs(AGE_IM)*SEX_IM+ 
+            REST_MIS+
+            as.factor(ROLLOVER)+
+            V_ALCH_IM+
+            as.factor(speed)+
+            as.factor(WEATHR_IM)+
+            as.factor(AIRBAG),
+          subset,family=quasibinomial())
+estTab[5:6,3] <- coef(s.weight4)[c(2,5)]
+ci.4 <- confint(s.weight4)
+estTab[5:6,4:5] <- ci.4[c(2,5),1:2]
+
+# label weight classes
+estTab$xval <- c("<3,000 lb, Rating: 4 stars",
+                 "<3,000 lb, Rating: 5 stars",
+                 "3,000-3499 lb, Rating: 4 stars",
+                 "3,000-3499 lb, Rating: 5 stars",
+                 "3,500-4,999 lb, Rating: 4 stars",
+                 "3,500-4,999 lb, Rating: 5 stars")
+levels(estTab$WeightClass) <- c("<3,000 lb", "3,000-3,499 lb", "3,500-3,999 lb")
+
+# change colors
+estTab$col <- factor(c(rep("blue1",2), rep("grey30",2), rep("red4",2)))
+
+# create labels for effect sizes
+estTab$labels <- paste(round(estTab$pointEst,2), " (95% CI:", round(estTab$LB95,2), " to ", round(estTab$UB95,2), ")", sep = "")
+
+# sort on weight class
+estTab2 <- estTab[c(6,5,4,3,2,1),]
+
+p <- ggplot(estTab, aes(x=xval, y=pointEst, ymin=LB95, ymax=UB95, col = WeightClass, label = labels)) + 
+        geom_pointrange() + 
+        labs(title = "Effects of 5-Star Ratings on Log-Odds of Injury") + 
+        coord_flip() +
+        geom_text(col = 1, nudge_x = 0.2, size = 3) + 
+        theme_bw() + 
+        geom_hline(aes(yintercept=0), lty=2) +
+        ylab("Log Odds") +
+        xlab("") +
+        theme(legend.position="none")
+p
+
+
+sum(data.all$vehicle.weight12)
+sum(data.all$vehicle.weight3)
+sum(data.all$vehicle.weight4)
+
+barplot(c(svytable(~vehicle.weight12, subset)[2],
+        svytable(~vehicle.weight3, subset)[2],
+        svytable(~vehicle.weight4, subset)[2]))
+
+
+```
+
+```{r}
+# joint Wald test for significance
+library(aod)
+# test rating 4 across all weight classes
+wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("rating4", names(coef(s))))
+# test rating 5 across all weight classes
+wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("rating5", names(coef(s))))
+```
+
+```{r}
+# chi-squared - df plot
+
+# rating 4
+r4.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("rating4", names(coef(s))))$result$chi2
+r4.stat <- r4.tmp[1] - r4.tmp[2]
+
+# rating 5
+r5.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("rating5", names(coef(s))))$result$chi2
+r5.stat <- r5.tmp[1] - r5.tmp[2]
+
+# all ratings
+r.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("rating", names(coef(s))))$result$chi2
+r.stat <- r.tmp[1] - r.tmp[2]
+
+weight.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("weight", names(coef(s))))$result$chi2
+weight.stat <- weight.tmp[1] - weight.tmp[2]
+
+# MAN_COLL
+man_col.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("MANCOL_IM", names(coef(s))))$result$chi2
+man_col.stat <- man_col.tmp[1] - man_col.tmp[2]
+
+# AIRBAG
+airbag.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("AIRBAG", names(coef(s))))$result$chi2
+airbag.stat <- airbag.tmp[1] - airbag.tmp[2]
+
+# INT_HWY
+int_hwy.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("INT_HWY", names(coef(s))))$result$chi2
+int_hwy.stat <- int_hwy.tmp[1] - int_hwy.tmp[2]
+
+# IMPACT_LOC
+impact_loc.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("IMPACT_LOC", names(coef(s))))$result$chi2
+impact_loc.stat <- impact_loc.tmp[1] - impact_loc.tmp[2]
+
+# AGE_IM
+age.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("AGE_IM", names(coef(s))))$result$chi2
+age.stat <- age.tmp[1] - age.tmp[2]
+
+# SEX_IM
+sex.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("SEX_IM", names(coef(s))))$result$chi2
+sex.stat <- sex.tmp[1] - sex.tmp[2]
+
+# REST_MIS
+rest.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("REST_MIS", names(coef(s))))$result$chi2
+rest.stat <- rest.tmp[1] - rest.tmp[2]
+
+# ROLLOVER
+rollover.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("ROLLOVER", names(coef(s))))$result$chi2
+rollover.stat <- rollover.tmp[1] - rollover.tmp[2]
+
+# V_ALCH_IM
+v_alch.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("V_ALCH_IM", names(coef(s))))$result$chi2
+v_alch.stat <- v_alch.tmp[1] - v_alch.tmp[2]
+
+# speed
+speed.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("speed", names(coef(s))))$result$chi2
+speed.stat <- speed.tmp[1] - speed.tmp[2]
+
+# WEATHER_IM
+weather.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("WEATHR_IM", names(coef(s))))$result$chi2
+weather.stat <- weather.tmp[1] - weather.tmp[2]
+
+# dot plot
+vals <- c(r.stat, man_col.stat, int_hwy.stat,impact_loc.stat, age.stat, sex.stat, rest.stat, rollover.stat, v_alch.stat, speed.stat, weather.stat,weight.stat,airbag.stat)
+names(vals) <- c("Rating", "Manner of Collision", "Interstate Highway","Impact Location", "Age", "Sex", "Seat Restraint Misuse", "Rollover", "Alcohol", "Speeding", "Weather","Weight","Air Bag Deployment")
+dotchart(sort(vals, decreasing = T), xlab = "Chi-squared statistic - degrees of freedom", main = "Ranking of Total Effect Sizes")
+abline(v = 0, lty = 3, col = 2)
+
+library(calibrate)
+textxy(X = sort(vals, decreasing = T) + c(-200,rep(2,11),2),
+       Y = 1:13, labs = sort(round(vals,2), decreasing = T), cex = 0.8, col = c(rep(1,7),2,1,1,1,1,1))
+```
+
+###Adjusted Model -- Severity
+```{r}
+s<-svyglm(SEVERE~rating5*vehicle.weight4+
+            rating5*vehicle.weight12+
+            rating4*vehicle.weight4+
+            rating4*vehicle.weight12+
+            as.factor(MANCOL_IM)+ 
+            as.factor(INT_HWY)+
+            as.factor(IMPACT_LOC)+ 
+            rcs(AGE_IM)*SEX_IM+ 
+            REST_MIS+
+            as.factor(ROLLOVER)+
+            V_ALCH_IM+
+            as.factor(speed)+
+            as.factor(WEATHR_IM)+
+            as.factor(AIRBAG),
+          subset, family=quasibinomial())
+
+confint(s)
+
+
+
+```
+
+```{r}
+# plot of beta effects
+estTab <- data.frame(WeightClass = rep(c("1/2","3","4"), each = 2),
+                     Rating = rep(c("2/3","5"), times = 3), 
+                     pointEst = NA,
+                     LB95 = NA,
+                     UB95 = NA)
+
+# fit model with weight class 1/2 as the base cagegory
+s.weight12<-svyglm(SEVERE~rating5*vehicle.weight4+
+            rating5*vehicle.weight3+
+            rating4*vehicle.weight4+
+            rating4*vehicle.weight3+
+            as.factor(MANCOL_IM)+ 
+            as.factor(INT_HWY)+
+            as.factor(IMPACT_LOC)+ 
+            rcs(AGE_IM)*SEX_IM+ 
+            REST_MIS+
+            as.factor(ROLLOVER)+
+            V_ALCH_IM+
+            as.factor(speed)+
+            as.factor(WEATHR_IM)+
+            as.factor(AIRBAG),
+          subset, family=quasibinomial())
+estTab[1:2,3] <- coef(s.weight12)[c(2,5)]
+ci.12 <- confint(s.weight12)
+estTab[1:2,4:5] <- ci.12[c(2,5),1:2]
+
+# fit model with weight class 3 as the base cagegory
+s.weight3<-svyglm(SEVERE~rating5*vehicle.weight4+
+            rating5*vehicle.weight12+
+            rating4*vehicle.weight4+
+            rating4*vehicle.weight12+
+            as.factor(MANCOL_IM)+ 
+            as.factor(INT_HWY)+
+            as.factor(IMPACT_LOC)+ 
+            rcs(AGE_IM)*SEX_IM+ 
+            REST_MIS+
+            as.factor(ROLLOVER)+
+            V_ALCH_IM+
+            as.factor(speed)+
+            as.factor(WEATHR_IM)+
+            as.factor(AIRBAG),
+          subset, family=quasibinomial())
+estTab[3:4,3] <- coef(s.weight3)[c(2,5)]
+ci.3 <- confint(s.weight3)
+estTab[3:4,4:5] <- ci.3[c(2,5),1:2]
+
+
+# fit model with weight class 4 as the base cagegory
+s.weight4<-svyglm(SEVERE~rating5*vehicle.weight12+
+            rating5*vehicle.weight3+
+            rating4*vehicle.weight12+
+            rating4*vehicle.weight3+
+            as.factor(MANCOL_IM)+ 
+            as.factor(INT_HWY)+
+            as.factor(IMPACT_LOC)+ 
+            rcs(AGE_IM)*SEX_IM+ 
+            REST_MIS+
+            as.factor(ROLLOVER)+
+            V_ALCH_IM+
+            as.factor(speed)+
+            as.factor(WEATHR_IM)+
+            as.factor(AIRBAG),
+          subset, family=quasibinomial())
+estTab[5:6,3] <- coef(s.weight4)[c(2,5)]
+ci.4 <- confint(s.weight4)
+estTab[5:6,4:5] <- ci.4[c(2,5),1:2]
+
+# label weight classes
+estTab$xval <- c("<3,000 lb, Rating: 5 stars",
+                 "<3,000 lb, Rating: 4 stars",
+                 "3,000-3499 lb, Rating: 5 stars",
+                 "3,000-3499 lb, Rating: 4 stars",
+                 "3,500-4,999 lb, Rating: 5 stars",
+                 "3,500-4,999 lb, Rating: 4 stars")
+levels(estTab$WeightClass) <- c("<3,000 lb", "3,000-3,499 lb", "3,500-3,999 lb")
+
+# change colors
+estTab$col <- factor(c(rep("blue1",2), rep("grey30",2), rep("red4",2)))
+
+# create labels for effect sizes
+estTab$labels <- paste(round(estTab$pointEst,2), " (95% CI:", round(estTab$LB95,2), " to ", round(estTab$UB95,2), ")", sep = "")
+
+# sort on weight class
+estTab2 <- estTab[c(6,5,4,3,2,1),]
+
+p <- ggplot(estTab, aes(x=xval, y=pointEst, ymin=LB95, ymax=UB95, col = WeightClass, label = labels)) + 
+        geom_pointrange() + 
+        labs(title = "Effects of 5-Star Ratings on Log-Odds of Severe Injury") + 
+        coord_flip() +
+        geom_text(col = 1, nudge_x = 0.2, size = 3) + 
+        theme_bw() + 
+        geom_hline(aes(yintercept=0), lty=2) +
+        ylab("Log Odds") +
+        xlab("") +
+        theme(legend.position="none")
+p
+
+
+sum(data.all$vehicle.weight12)
+sum(data.all$vehicle.weight3)
+sum(data.all$vehicle.weight4)
+
+barplot(c(svytable(~vehicle.weight12, subset)[2],
+        svytable(~vehicle.weight3, subset)[2],
+        svytable(~vehicle.weight4, subset)[2]))
+
+
+```
+
+```{r}
+# joint Wald test for significance
+library(aod)
+# test rating 23 across all weight classes
+wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("rating23", names(coef(s))))
+# test rating 5 across all weight classes
+wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("rating5", names(coef(s))))
+```
+
+```{r}
+# chi-squared - df plot
+# all ratings
+r.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("rating", names(coef(s))))$result$chi2
+r.stat <- r.tmp[1] - r.tmp[2]
+
+weight.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("weight", names(coef(s))))$result$chi2
+weight.stat <- weight.tmp[1] - weight.tmp[2]
+
+# MAN_COLL
+man_col.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("MANCOL_IM", names(coef(s))))$result$chi2
+man_col.stat <- man_col.tmp[1] - man_col.tmp[2]
+
+# AIRBAG
+airbag.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("AIRBAG", names(coef(s))))$result$chi2
+airbag.stat <- airbag.tmp[1] - airbag.tmp[2]
+
+# INT_HWY
+int_hwy.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("INT_HWY", names(coef(s))))$result$chi2
+int_hwy.stat <- int_hwy.tmp[1] - int_hwy.tmp[2]
+
+# IMPACT_LOC
+impact_loc.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("IMPACT_LOC", names(coef(s))))$result$chi2
+impact_loc.stat <- impact_loc.tmp[1] - impact_loc.tmp[2]
+
+# AGE_IM
+age.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("AGE_IM", names(coef(s))))$result$chi2
+age.stat <- age.tmp[1] - age.tmp[2]
+
+# SEX_IM
+sex.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("SEX_IM", names(coef(s))))$result$chi2
+sex.stat <- sex.tmp[1] - sex.tmp[2]
+
+# REST_MIS
+rest.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("REST_MIS", names(coef(s))))$result$chi2
+rest.stat <- rest.tmp[1] - rest.tmp[2]
+
+# ROLLOVER
+rollover.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("ROLLOVER", names(coef(s))))$result$chi2
+rollover.stat <- rollover.tmp[1] - rollover.tmp[2]
+
+# V_ALCH_IM
+v_alch.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("V_ALCH_IM", names(coef(s))))$result$chi2
+v_alch.stat <- v_alch.tmp[1] - v_alch.tmp[2]
+
+# speed
+speed.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("speed", names(coef(s))))$result$chi2
+speed.stat <- speed.tmp[1] - speed.tmp[2]
+
+# WEATHER_IM
+weather.tmp <- wald.test(Sigma = vcov(s), b = coef(s), Terms = grep("WEATHR_IM", names(coef(s))))$result$chi2
+weather.stat <- weather.tmp[1] - weather.tmp[2]
+
+# dot plot
+vals <- c(r.stat, man_col.stat, int_hwy.stat,impact_loc.stat, age.stat, sex.stat, rest.stat, rollover.stat, v_alch.stat, speed.stat, weather.stat,weight.stat,airbag.stat)
+names(vals) <- c("Rating", "Manner of Collision", "Interstate Highway","Impact Location", "Age", "Sex", "Seat Restraint Misuse", "Rollover", "Alcohol", "Speeding", "Weather","Weight","Air Bag Deployment")
+dotchart(sort(vals, decreasing = T), xlab = "Chi-squared statistic - degrees of freedom", main = "Ranking of Total Effect Sizes")
+abline(v = 0, lty = 3, col = 2)
+
+library(calibrate)
+textxy(X = sort(vals, decreasing = T) + c(-150,rep(2,11),5),
+       Y = 1:13, labs = sort(round(vals,2), decreasing = T), cex = 0.8, col = c(rep(1,12),2))
+```
+
+
+
+
+
+
+
+
+```{r}
+# evaluate PO assumption on rating variable
+subData <- subset(data.all, MOD_YEAR>2010 & rating!=9 & !(MXVSEV_IM %in% c(5,6,8)) )
+subData$rating.cat[subData$rating %in% c(2,3)] <- "2/3"
+subData$rating.cat[subData$rating == 4] <- "4"
+subData$rating.cat[subData$rating == 5] <- "5"
+subData$rating.cat <- as.factor(subData$rating.cat)
+
+Ecdf(~ MXVSEV_IM, group = rating.cat, fun = qlogis, data = subData,
+     xlab = "Maximum Injury Severity",
+     label.curves = list(keys = "lines"))
+
+```
+
+
+```{r}
+# spline plots
+plot.age <- ggplot(Predict(s, rcs(AGE_IM)AGE_IM), adj.subtitle = F) + 
+  theme_bw() + 
+  labs(y = "Log Length of Stay")
+
+```
+
+
+```{r}
+#test for prop odds
+s1<-svyglm(I(MXVSEV_IM>0)~rating5*vehicle.weight4+
+            rating5*vehicle.weight12+
+            rating4*vehicle.weight4+
+            rating4*vehicle.weight12,
+          subset,family=quasibinomial())
+s2<-svyglm(I(MXVSEV_IM>1)~rating5*vehicle.weight4+
+            rating5*vehicle.weight12+
+            rating4*vehicle.weight4+
+            rating4*vehicle.weight12,
+          subset,family=quasibinomial())
+s3<-svyglm(I(MXVSEV_IM>2)~rating5*vehicle.weight4+
+            rating5*vehicle.weight12+
+            rating4*vehicle.weight4+
+            rating4*vehicle.weight12,
+          subset,family=quasibinomial())
+s4<-svyglm(I(MXVSEV_IM>3)~rating5*vehicle.weight4+
+            rating5*vehicle.weight12+
+            rating4*vehicle.weight4+
+            rating4*vehicle.weight12,
+          subset,family=quasibinomial())
+
+
+par(mar=c(2,10,5,2))
+plot(coef(s1)[c(2,5)],1:2,yaxt="n",ylab="",xlim=c(-.75,.75),main="Weight Class 3000-3499",ylim=c(0,3))
+axis(2,labels=c("Rating 5","Rating 4"),at=1:2,las=2)
+points(coef(s2)[c(2,5)],1:2,col=2)
+points(coef(s3)[c(2,5)],1:2,col=3)
+points(coef(s4)[c(2,5)],1:2,col=4)
+abline(h=c(1,2),lty=2,lwd=.5)
+
+##weight <3000
+s1<-svyglm(I(MXVSEV_IM>0)~rating5*vehicle.weight4+
+            rating5*vehicle.weight3+
+            rating4*vehicle.weight4+
+            rating4*vehicle.weight3,
+          subset,family=quasibinomial())
+s2<-svyglm(I(MXVSEV_IM>1)~rating5*vehicle.weight4+
+            rating5*vehicle.weight3+
+            rating4*vehicle.weight4+
+            rating4*vehicle.weight3,
+          subset,family=quasibinomial())
+s3<-svyglm(I(MXVSEV_IM>2)~rating5*vehicle.weight4+
+            rating5*vehicle.weight3+
+            rating4*vehicle.weight4+
+            rating4*vehicle.weight3,
+          subset,family=quasibinomial())
+s4<-svyglm(I(MXVSEV_IM>3)~rating5*vehicle.weight4+
+            rating5*vehicle.weight3+
+            rating4*vehicle.weight4+
+            rating4*vehicle.weight3,
+          subset,family=quasibinomial())
+
+par(mar=c(2,10,5,2))
+plot(coef(s1)[c(2,5)],1:2,yaxt="n",ylab="",xlim=c(-2,.75),main="Weight Class <3000lb",ylim=c(0,3))
+axis(2,labels=c("Rating 5","Rating 4"),at=1:2,las=2)
+points(coef(s2)[c(2,5)],1:2,col=2)
+points(coef(s3)[c(2,5)],1:2,col=3)
+points(coef(s4)[c(2,5)],1:2,col=4)
+abline(h=c(1,2),lty=2,lwd=.5)
+
+
+##weight >3500
+s1<-svyglm(I(MXVSEV_IM>0)~rating5*vehicle.weight12+
+            rating5*vehicle.weight3+
+            rating4*vehicle.weight12+
+            rating4*vehicle.weight3,
+          subset,family=quasibinomial())
+s2<-svyglm(I(MXVSEV_IM>1)~rating5*vehicle.weight12+
+            rating5*vehicle.weight3+
+            rating4*vehicle.weight12+
+            rating4*vehicle.weight3,
+          subset,family=quasibinomial())
+s3<-svyglm(I(MXVSEV_IM>2)~rating5*vehicle.weight12+
+            rating5*vehicle.weight3+
+            rating4*vehicle.weight12+
+            rating4*vehicle.weight3,
+          subset,family=quasibinomial())
+s4<-svyglm(I(MXVSEV_IM>3)~rating5*vehicle.weight12+
+            rating5*vehicle.weight3+
+            rating4*vehicle.weight12+
+            rating4*vehicle.weight3,
+          subset,family=quasibinomial())
+
+par(mar=c(2,10,5,2))
+plot(coef(s1)[c(2,5)],1:2,yaxt="n",ylab="",xlim=c(-.5,3),main="Weight Class >3500lb",ylim=c(0,3))
+axis(2,labels=c("Rating 5","Rating 4"),at=1:2,las=2)
+points(coef(s2)[c(2,5)],1:2,col=2)
+points(coef(s3)[c(2,5)],1:2,col=3)
+points(coef(s4)[c(2,5)],1:2,col=4)
+abline(h=c(1,2),lty=2,lwd=.5)
+```
+
+```{r}
+subset.data$mxvsev<-as.factor(subset.data$MXVSEV_IM)
+subset.data$numrating<-as.numeric(subset.data$rating_comb)
+
+plot.xmean.ordinaly(mxvsev~numrating,data=subset.data[subset.data$vehicle.weight12==1,],main="<3000")
+plot.xmean.ordinaly(mxvsev~numrating,data=subset.data[subset.data$vehicle.weight3==1,],main="3000-3499")
+plot.xmean.ordinaly(mxvsev~numrating,data=subset.data[subset.data$vehicle.weight4==1,],main=">3500")
+```

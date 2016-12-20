@@ -39,8 +39,8 @@ We won the Government Statistics Section JSM Data Challenge. We found that in mi
     * A Police Accident Report must be completed for the crash
     * Crash must involve at least one motor vehicle traveling on a trafficway
     * Crash must result in property damage, injury, or death 
-
-<img src="~/figs/weighting-scheme.png" alt="strength">
+    
+![](https://raw.githubusercontent.com/LucyMcGowan/NHTSA-safety-analysis/master/figs/weighting-scheme.png)
 
 
 
@@ -48,9 +48,84 @@ We won the Government Statistics Section JSM Data Challenge. We found that in mi
 2. **Stage 2** is a sampling of police jurisdictions within each PSU based upon probability proportional to the number of crashes investigated in a given jurisdiction.  *An average of seven police jurisdictions have been selected within each PSU*.
 3. **Stage 3** is the selection of crashes within the sampled police jurisdictions. 
 
+![](https://raw.githubusercontent.com/LucyMcGowan/NHTSA-safety-analysis/master/figs/weighting-scheme-weight.png)
+
 The weight is the product of the inverse of the probabilities of selection at each of the three stages in the sampling process. 
 
 For more information on the sample scheme: [click here](https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/812320).
+
+#### Design
+* Incorporating the design in the statistical analysis is vital
+* In order to obtain the correct standard error estimates for a subpopulation, we need to properly account for the weights and design
+
+* All analysis was completed using `R`
+* We primarily utilized the **survey** package:
+    * T. Lumley (2014) "survey: analysis of complex survey samples". R package version 3.30. 
+    * T. Lumley (2004) Analysis of complex survey samples. Journal of Statistical Software  9(1): 1-19
+
+#### Variable Definitions
+
+<center>
+<span style="color:#EB6864; font-size: 15pt">[**Outcome**: Maximum Injury Severity within Vehicle]</span></center>
+
+*0*: No injury 
+
+*1*: Some injury (ranging from possible to fatal) 
+
+<center>
+<span style="color:#EB6864; font-size: 15pt">[**Predictor of Interest**: NHTSA Overall Ratings]</span></center>
+
+*5 Stars*: Injury risk for this vehicle is much less than average 
+
+*4 Stars*: Injury risk for this vehicle is less than average to average 
+
+*2 or 3 Stars*: Injury risk for this vehicle is average to greater than average or greater than average
+*There were no one star vehicles in our data set*
+
+**Adjusted for:**
+
+* Seat restraint misuse 
+* Speeding 
+* Indicator for interstate highway 
+* Weather  
+* Impact location 
+* Alcohol involvement 
+* Indicator for rollover 
+* Indicator for airbag deployment 
+* Manner of collision 
+* Age 
+* Sex 
+* Age x Sex 
+
+**Fit a logistic model:**
+
+* Injured versus uninjured
+* Adjusted for all covariates shown previously
+* Fit an interaction between rating x weight class
+
+
+### Results
+* Weighted sample: N=2,595,190
+* Unweighted sample: N=19,428
+* Merged 4 years of data (2011-2014)
+* Included vehicles:
+    * had a safety rating (2011+)
+    * had passengers with known injury severity 
+
+Maximum Injury in Vehicle |	Weighted frequency (%)
+------------------------|-----------------------
+No injury |	2,170,141.59 (83.6%)
+Injury |	425,048.1 (16.4%)
+
+NHTSA Safety Rating |	Weighted frequency (%)
+--------------------|-----------------------
+5-stars |	936,457.93 (36.1%)
+4-stars	| 1,448,491.93 (55.8%)
+2- or 3-stars | 201,239.8 (8.1%)
+
+
+Figures 1, 2, and 3 show the injury & saftey ratings by weight class. Figure 2 shows the concerning result that 2-3 star rated cars in the mid-size weight class have proportionally fewer injuries. These results hold true after adjusting for the covariates, this result held true (Figure 4). **Here is where we would love your input! Perhaps we missed an important confounder. All of the data can be found [here](https://github.com/LucyMcGowan/NHTSA-safety-analysis) along with our [raw analysis files](https://github.com/LucyMcGowan/NHTSA-safety-analysis/raw)**
+
 
 
 ```{r, include = FALSE, echo=FALSE}
@@ -61,8 +136,8 @@ library(plotly)
 ```
 
 ```{r}
-load("data.all.rda")
-load("subset.data.rda")
+load("data/data.all.rda")
+load("data/subset.data.rda")
 ```
 
 ```{r}
@@ -75,19 +150,84 @@ des<-svydesign(id=~PSU, strata=~STRATUM, weights=~WEIGHT,data=data.all, nest=TRU
 subset<-subset(des,MOD_YEAR>2010 & rating!=9 & !(MXVSEV_IM %in% c(5,6,8)) )
 
 ###barplots by weight
-prop1<-prop.table(svytable(~MXVSEV_IM+rating_comb,subset(subset, vehicle.weightc==1)),2)
+prop1<-prop.table(svytable(~injured+rating_comb,subset(subset, vehicle.weightc==1)),2)
 colnames(prop1)<-c("2- or 3-Stars","4-Stars","5-Stars")
 
-prop2<-prop.table(svytable(~MXVSEV_IM+rating_comb,subset(subset, vehicle.weightc==2)),2)
+prop2<-prop.table(svytable(~injured+rating_comb,subset(subset, vehicle.weightc==2)),2)
 colnames(prop2)<-c("2- or 3-Stars","4-Stars","5-Stars")
 
-prop3<-prop.table(svytable(~MXVSEV_IM+rating_comb,subset(subset, vehicle.weightc==3)),2)
+prop3<-prop.table(svytable(~injured+rating_comb,subset(subset, vehicle.weightc==3)),2)
 colnames(prop3)<-c("2- or 3-Stars","4-Stars","5-Stars")
 
 ```
 
-###% Injured by rating
-```{r,fig.height=5}
+```{r, fig.cap="Figure 1: Maximum Injury by Saftey Rating (Weight <3000lb)", fig.height = 3}
+
+  x <- list(
+  title = "NHTSA Saftey Rating"
+)
+y <- list(
+  title = "Proportion"
+)
+
+p <- plot_ly(
+  x = c("2-3 Stars", "4 Stars", "5 Stars"),
+  y = prop1[1,],
+  name = "No injury",
+  type = "bar") 
+
+p2<-add_trace(p,
+       x = c("2-3 Stars", "4 Stars", "5 Stars"),
+    y = prop1[2,],
+    name = "injury",
+   type = "bar")  
+
+plot1<-layout(p2,barmode="stack") %>%
+  layout( xaxis=x,yaxis=y)
+plot1
+```
+
+
+```{r, fig.height = 3, fig.cap="Figure 2: Maximum Injury by Saftey Rating (Weight 3000-3499lb)"}
+
+p <- plot_ly(
+  x = c("2-3 Stars", "4 Stars", "5 Stars"),
+  y = prop2[1,],
+  name = "No injury",
+  type = "bar") 
+
+p2<-add_trace(p,
+       x = c("2-3 Stars", "4 Stars", "5 Stars"),
+    y = prop2[2,],
+    name = "injury",
+   type = "bar")  
+
+plot2<-layout(p2,barmode="stack") %>%
+  layout( xaxis=x,yaxis=y)
+plot2
+```
+
+
+```{r, fig.height = 3, fig.cap="Figure 3: Maximum Injury by Saftey Rating (Weight >3500lb)"}
+p <- plot_ly(
+  x = c("2-3 Stars", "4 Stars", "5 Stars"),
+  y = prop3[1,],
+  name = "No injury",
+  type = "bar") 
+
+p2<-add_trace(p,
+       x = c("2-3 Stars", "4 Stars", "5 Stars"),
+    y = prop3[2,],
+    name = "injury",
+   type = "bar")  
+
+plot3<-layout(p2,barmode="stack") %>%
+  layout( xaxis=x,yaxis=y)
+plot3
+```
+
+
+```{r, warning = FALSE, message = FALSE, fig.height=5, fig.cap = "Figure 4: Percent Injured by rating"}
 #create a table of proportion injured by car type
 t<-prop.table(svytable(~mm.id+injured,subset(subset,vehicle.weight3==1)),1)
 t.injured<-data.frame(mm.id=rownames(t),injured=t[,2])
@@ -108,111 +248,8 @@ plot_ly(data = t2, x = ~injured, y = ~rating, type = "scatter", mode = "markers"
 ```
 
 
-###Maximum Injury by Saftey Rating (Weight <3000lb)
-```{r}
-
-  x <- list(
-  title = "NHTSA Saftey Rating"
-)
-y <- list(
-  title = "Proportion"
-)
-
-p <- plot_ly(
-  x = c("2-3 Stars", "4 Stars", "5 Stars"),
-  y = prop1[1,],
-  name = "No injury",
-  type = "bar") 
-
-p2<-add_trace(p,
-       x = c("2-3 Stars", "4 Stars", "5 Stars"),
-    y = prop1[2,],
-    name = "Possible injury",
-   type = "bar")  
-p3<-add_trace(p2,
-     x = c("2-3 Stars", "4 Stars", "5 Stars"),
-    y = prop1[3,],
-    name = "Non-incapacitating",
-   type = "bar")
-p4<-add_trace(p3,
-     x = c("2-3 Stars", "4 Stars", "5 Stars"),
-    y = prop1[4,],
-    name = "Incapacitating",
-   type = "bar")
-p5<-add_trace(p4,
-     x = c("2-3 Stars", "4 Stars", "5 Stars"),
-    y = prop1[5,],
-    name = "Fatal",
-   type = "bar")
-plot1<-layout(p5,barmode="stack") %>%
-  layout( xaxis=x,yaxis=y)
-plot1
-```
-
-###Maximum Injury by Saftey Rating (Weight >3500lb)
-```{r}
-p <- plot_ly(
-  x = c("2-3 Stars", "4 Stars", "5 Stars"),
-  y = prop3[1,],
-  name = "No injury",
-  type = "bar") 
-
-p2<-add_trace(p,
-       x = c("2-3 Stars", "4 Stars", "5 Stars"),
-    y = prop3[2,],
-    name = "Possible injury",
-   type = "bar")  
-p3<-add_trace(p2,
-     x = c("2-3 Stars", "4 Stars", "5 Stars"),
-    y = prop3[3,],
-    name = "Non-incapacitating",
-   type = "bar")
-p4<-add_trace(p3,
-     x = c("2-3 Stars", "4 Stars", "5 Stars"),
-    y = prop3[4,],
-    name = "Incapacitating",
-   type = "bar")
-p5<-add_trace(p4,
-     x = c("2-3 Stars", "4 Stars", "5 Stars"),
-    y = prop3[5,],
-    name = "Fatal",
-   type = "bar")
-plot3<-layout(p5,barmode="stack") %>%
-  layout( xaxis=x,yaxis=y)
-plot3
-```
-
-
-###Maximum Injury by Saftey Rating (Weight 3000-3499lb)
-```{r}
-
-p <- plot_ly(
-  x = c("2-3 Stars", "4 Stars", "5 Stars"),
-  y = prop2[1,],
-  name = "No injury",
-  type = "bar") 
-
-p2<-add_trace(p,
-       x = c("2-3 Stars", "4 Stars", "5 Stars"),
-    y = prop2[2,],
-    name = "Possible injury",
-   type = "bar")  
-p3<-add_trace(p2,
-     x = c("2-3 Stars", "4 Stars", "5 Stars"),
-    y = prop2[3,],
-    name = "Non-incapacitating",
-   type = "bar")
-p4<-add_trace(p3,
-     x = c("2-3 Stars", "4 Stars", "5 Stars"),
-    y = prop2[4,],
-    name = "Incapacitating",
-   type = "bar")
-p5<-add_trace(p4,
-     x = c("2-3 Stars", "4 Stars", "5 Stars"),
-    y = prop2[5,],
-    name = "Fatal",
-   type = "bar")
-plot2<-layout(p5,barmode="stack") %>%
-  layout( xaxis=x,yaxis=y)
-plot2
-```
+#### Limitations
+* This analysis was limited to vehicles that were in accidents – we don’t know the distribution of ratings in the general population
+* It is possible that 4 or 5 star cars are more likely to be rated than 2 or 3 star cars
+* Limiting ourselves to using ratings from 2011-2014 drastically decreased our sample size and limited the information about other cars involved in each accident
+* We were only able to observe 330 unique make/model/year combinations
